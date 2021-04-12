@@ -1,0 +1,2 @@
+Data di collaudo	Ora di collaudo	Esito di collaudo	Pezzo ripassato	Tensione alimentazione	Resistenza riscaldatore	Temperatura Operativa	Percentuale di Ossigeno	Corrente riscaldatore a regime	Resistenza calibrazione	Resistenza isolamento layer interni
+14/01/2019	15:37:30	8	FALSO	13,498	3,00	780,3	11,767	1123	170,3	3,2

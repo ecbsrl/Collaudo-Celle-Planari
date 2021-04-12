@@ -1,0 +1,45 @@
+0	Data ed ora di creazione	17/02/2021, 08:42:02	
+1	Data ed ora dell'ultima modifica	17/02/2021, 13:23:19	
+2	Indice revisione	A	
+3	Nome ricetta master	PROVA	
+4	Codice attrezzatura		
+5	Tipologia Sonda	ZFAS-U2	
+10	Abilitazione marcatura	VERO	
+11	Durata marcatura	1,0	s
+20	Tensione Alimentazione Minima	13,450	V
+21	Tensione Alimentazione Massima	13,550	V
+30	Resistenza Riscaldatore - Abilitazione test	FALSO	
+31	 Resistenza Riscaldatore Minima	2,60	Ω
+32	Resistenza Riscaldatore Massima	3,90	Ω
+40	Corrente Riscaldatore a Regime - Abilitazione test	FALSO	
+41	Corrente Minima Riscaldatore a Regime	800	mA
+42	Corrente Massima Riscaldatore a Regime	1500	mA
+50	Resistenza di Isolamento - Abilitazione test	FALSO	
+51	Resistenza di Isolamento Minima	0,4	MΩ
+52	Resistenza di Isolamento Massima	10,0	MΩ
+60	LSU - Tempo di Riscaldamento	60	s
+61	Tempo di Raffreddamento	60	s
+70	LSU - Flusso Aria Erogato	0,829	NL/Minuto
+71	LSU - Flusso N2 Erogato	1,213	NL/Minuto
+72	LSU - Target O2 %	8,310	%
+73	LSU - Temperatura Operativa - Abilitazione test	FALSO	
+74	LSU - Temperatura Operativa Minima	760	°C
+75	LSU - Temperatura Operativa Massima	785	°C
+76	LSU - Percentuale Ossigeno - Abilitazione test	FALSO	
+77	LSU - Percentuale Ossigeno Minima	8,310	%
+78	LSU - Percentuale Ossigeno Massima	20,000	%
+79	LSU - Resistenza di Calibrazione - Abilitazione test	FALSO	
+80	LSU - Resistenza di Calibrazione Minima	30,0	Ω
+81	LSU - Resistenza di Calibrazione Massima	300,0	Ω
+90	ADV - Corrente Pumping Abilitazione	FALSO	
+91	ADV - Corrente Pumping Minima	0,335	mA
+92	ADV - Corrente Pumping Massima	0,385	mA
+93	ADV - Lambda Abilitazione	FALSO	
+94	ADV - Lambda Minimo	1,40	mA
+95	ADV - Lambda Massimo	1,46	mA
+100	ZFAS - Corrente Pumping Etas Abilitazione	VERO	
+101	ZFAS - Corrente Pumping Etas Minima	4,61	mA
+102	ZFAS - Corrente Pumping Etas Massima	5,89	mA
+103	ZFAS - Corrente Pumping TB Abilitazione	VERO	
+104	ZFAS - Corrente Pumping TB Minima	3,80	mA
+105	ZFAS - Corrente Pumping TB Massima	4,80	mA

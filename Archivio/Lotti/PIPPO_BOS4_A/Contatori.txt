@@ -1,0 +1,4 @@
+Numero buoni non ripassati	0
+Numero scarti non ripassati	0
+Numero buoni ripassati	0
+Numero scarti ripassati	0

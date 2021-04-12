@@ -1,0 +1,20 @@
+Offset Mass Flow Controller O2 - NL/minuto	0,000
+Moltiplicatore Mass Flow Controller O2	1,000
+Offset Mass Flow Controller N2 - NL/minuto	0,000
+Moltiplicatore Mass Flow Controller N2	1,000
+Offset Misura Tensione - V	0,000
+Moltiplicatore Misura Tensione	1,000
+Offset misura portata / Nl/min	0,000
+Moltiplicatore misura portata	1,000
+Offset misura posizione / mm	0,00
+Moltiplicatore misura posizione	1,000
+Offset LSU O2 / %	0,00
+Moltiplicatore LSU O2	1,000
+Offset ADV Lambda / -	0,000
+Moltiplicatore ADV Lambda	1,000
+Offset ADV Corrente Pumping / mA	0,000
+Moltiplicatore ADV Corrente Pumping	1,000
+Offset ZFAS Corrente Pumping Etas / mA	0,000
+Moltiplicatore Corrente Pumping Etas	1,000
+Offset LSU Corrente Pumping TB / mA	0,000
+Moltiplicatore Corrente Pumping TB	1,000

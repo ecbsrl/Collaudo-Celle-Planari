@@ -1,0 +1,9 @@
+Abilitazione cicli master	False
+Abilitazione ciclo interrotto su scarto	True
+Cartella backup generale	
+Cartella backup lotti	
+Cartella backup ricette	
+Cartella backup tarature	
+Cicli totali stazione	8909
+Flusso Aria per Taratura	0,829
+Flusso Azoto per Taratura	1,213
