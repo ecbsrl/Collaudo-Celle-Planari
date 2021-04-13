@@ -151,7 +151,7 @@ Partial Class frmDiagnostica
         Me.tbMisurazioni = New System.Windows.Forms.TabPage()
         Me.btnArrestaErogazione = New System.Windows.Forms.Button()
         Me.btnAvviaErogazione = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.gbErrorLog = New System.Windows.Forms.GroupBox()
         Me.btnCleanLog = New System.Windows.Forms.Button()
         Me.btnViewLog = New System.Windows.Forms.Button()
         Me.lblErrorLog = New System.Windows.Forms.Label()
@@ -175,6 +175,31 @@ Partial Class frmDiagnostica
         Me.lblDescCorrDispersa = New System.Windows.Forms.Label()
         Me.cbAbilitazioneIsolamento = New System.Windows.Forms.CheckBox()
         Me.tbMisurazioni2 = New System.Windows.Forms.TabPage()
+        Me.gbAdvCorrenteRiscaldatore = New System.Windows.Forms.GroupBox()
+        Me.labUdmAdvCorrenteRiscaldatore = New System.Windows.Forms.Label()
+        Me.labAdvCorrenteRiscaldatore = New System.Windows.Forms.Label()
+        Me.labDescAdvCorrenteRiscaldatore = New System.Windows.Forms.Label()
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore = New System.Windows.Forms.CheckBox()
+        Me.gbZfasCorrenteRiscaldatore = New System.Windows.Forms.GroupBox()
+        Me.labZfasCorrenteRiscaldatore = New System.Windows.Forms.Label()
+        Me.labDescZfasCorrenteRiscaldatore = New System.Windows.Forms.Label()
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore = New System.Windows.Forms.CheckBox()
+        Me.labUdmZfasCorrenteRiscaldatore = New System.Windows.Forms.Label()
+        Me.gbAdvLambda = New System.Windows.Forms.GroupBox()
+        Me.labAdvLambda = New System.Windows.Forms.Label()
+        Me.labDescAdvLambda = New System.Windows.Forms.Label()
+        Me.cbAdvAbilitazioneLambda = New System.Windows.Forms.CheckBox()
+        Me.gbZfasIp = New System.Windows.Forms.GroupBox()
+        Me.labZfasIpEtas = New System.Windows.Forms.Label()
+        Me.labDescZfasIpEtas = New System.Windows.Forms.Label()
+        Me.cbZfasAbilitationeIp = New System.Windows.Forms.CheckBox()
+        Me.labUdmZfasIpEtas = New System.Windows.Forms.Label()
+        Me.labUdmAdvIp = New System.Windows.Forms.Label()
+        Me.labDescAdvIp = New System.Windows.Forms.Label()
+        Me.labAdvIp = New System.Windows.Forms.Label()
+        Me.labUdmZfasIpTb = New System.Windows.Forms.Label()
+        Me.labDescZfasIpTb = New System.Windows.Forms.Label()
+        Me.labZfasIpTb = New System.Windows.Forms.Label()
         Me.gbTensioneAlimentazione.SuspendLayout()
         Me.gbIngressiDigitali.SuspendLayout()
         CType(Me.pbIngressoDigitale23, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -231,10 +256,15 @@ Partial Class frmDiagnostica
         Me.tbDiagnostica.SuspendLayout()
         Me.tbIO.SuspendLayout()
         Me.tbMisurazioni.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
+        Me.gbErrorLog.SuspendLayout()
         Me.gbAzoto.SuspendLayout()
         Me.gbAria.SuspendLayout()
         Me.gbMisuraIsolamnento.SuspendLayout()
+        Me.tbMisurazioni2.SuspendLayout()
+        Me.gbAdvCorrenteRiscaldatore.SuspendLayout()
+        Me.gbZfasCorrenteRiscaldatore.SuspendLayout()
+        Me.gbAdvLambda.SuspendLayout()
+        Me.gbZfasIp.SuspendLayout()
         Me.SuspendLayout()
         '
         'tmrMonitor
@@ -1508,7 +1538,7 @@ Partial Class frmDiagnostica
         Me.tbMisurazioni.BackColor = System.Drawing.SystemColors.Control
         Me.tbMisurazioni.Controls.Add(Me.btnArrestaErogazione)
         Me.tbMisurazioni.Controls.Add(Me.btnAvviaErogazione)
-        Me.tbMisurazioni.Controls.Add(Me.GroupBox1)
+        Me.tbMisurazioni.Controls.Add(Me.gbErrorLog)
         Me.tbMisurazioni.Controls.Add(Me.gbAzoto)
         Me.tbMisurazioni.Controls.Add(Me.gbAria)
         Me.tbMisurazioni.Controls.Add(Me.gbMisuraIsolamnento)
@@ -1540,18 +1570,18 @@ Partial Class frmDiagnostica
         Me.btnAvviaErogazione.Text = "Avvia Erogazione"
         Me.btnAvviaErogazione.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'gbErrorLog
         '
-        Me.GroupBox1.Controls.Add(Me.btnCleanLog)
-        Me.GroupBox1.Controls.Add(Me.btnViewLog)
-        Me.GroupBox1.Controls.Add(Me.lblErrorLog)
-        Me.GroupBox1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(471, 264)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(440, 258)
-        Me.GroupBox1.TabIndex = 9
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Error Log"
+        Me.gbErrorLog.Controls.Add(Me.btnCleanLog)
+        Me.gbErrorLog.Controls.Add(Me.btnViewLog)
+        Me.gbErrorLog.Controls.Add(Me.lblErrorLog)
+        Me.gbErrorLog.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbErrorLog.Location = New System.Drawing.Point(471, 264)
+        Me.gbErrorLog.Name = "gbErrorLog"
+        Me.gbErrorLog.Size = New System.Drawing.Size(440, 258)
+        Me.gbErrorLog.TabIndex = 9
+        Me.gbErrorLog.TabStop = False
+        Me.gbErrorLog.Text = "Error Log"
         '
         'btnCleanLog
         '
@@ -1802,12 +1832,290 @@ Partial Class frmDiagnostica
         'tbMisurazioni2
         '
         Me.tbMisurazioni2.BackColor = System.Drawing.SystemColors.Control
+        Me.tbMisurazioni2.Controls.Add(Me.gbZfasIp)
+        Me.tbMisurazioni2.Controls.Add(Me.gbZfasCorrenteRiscaldatore)
+        Me.tbMisurazioni2.Controls.Add(Me.gbAdvLambda)
+        Me.tbMisurazioni2.Controls.Add(Me.gbAdvCorrenteRiscaldatore)
         Me.tbMisurazioni2.Location = New System.Drawing.Point(4, 25)
         Me.tbMisurazioni2.Name = "tbMisurazioni2"
         Me.tbMisurazioni2.Padding = New System.Windows.Forms.Padding(3)
         Me.tbMisurazioni2.Size = New System.Drawing.Size(917, 537)
         Me.tbMisurazioni2.TabIndex = 2
         Me.tbMisurazioni2.Text = "Misurazioni 2"
+        '
+        'gbAdvCorrenteRiscaldatore
+        '
+        Me.gbAdvCorrenteRiscaldatore.Controls.Add(Me.labAdvCorrenteRiscaldatore)
+        Me.gbAdvCorrenteRiscaldatore.Controls.Add(Me.labDescAdvCorrenteRiscaldatore)
+        Me.gbAdvCorrenteRiscaldatore.Controls.Add(Me.cbAdvAbilitazioneCorrenteRiscaldatore)
+        Me.gbAdvCorrenteRiscaldatore.Controls.Add(Me.labUdmAdvCorrenteRiscaldatore)
+        Me.gbAdvCorrenteRiscaldatore.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbAdvCorrenteRiscaldatore.Location = New System.Drawing.Point(8, 152)
+        Me.gbAdvCorrenteRiscaldatore.Margin = New System.Windows.Forms.Padding(5)
+        Me.gbAdvCorrenteRiscaldatore.Name = "gbAdvCorrenteRiscaldatore"
+        Me.gbAdvCorrenteRiscaldatore.Padding = New System.Windows.Forms.Padding(5)
+        Me.gbAdvCorrenteRiscaldatore.Size = New System.Drawing.Size(440, 95)
+        Me.gbAdvCorrenteRiscaldatore.TabIndex = 3
+        Me.gbAdvCorrenteRiscaldatore.TabStop = False
+        Me.gbAdvCorrenteRiscaldatore.Text = "ADV - Misura Corrente Riscaldatore"
+        '
+        'labUdmAdvCorrenteRiscaldatore
+        '
+        Me.labUdmAdvCorrenteRiscaldatore.AutoSize = True
+        Me.labUdmAdvCorrenteRiscaldatore.Location = New System.Drawing.Point(400, 61)
+        Me.labUdmAdvCorrenteRiscaldatore.Name = "labUdmAdvCorrenteRiscaldatore"
+        Me.labUdmAdvCorrenteRiscaldatore.Size = New System.Drawing.Size(34, 19)
+        Me.labUdmAdvCorrenteRiscaldatore.TabIndex = 3
+        Me.labUdmAdvCorrenteRiscaldatore.Text = "mA"
+        '
+        'labAdvCorrenteRiscaldatore
+        '
+        Me.labAdvCorrenteRiscaldatore.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.labAdvCorrenteRiscaldatore.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.labAdvCorrenteRiscaldatore.Location = New System.Drawing.Point(280, 55)
+        Me.labAdvCorrenteRiscaldatore.Margin = New System.Windows.Forms.Padding(5)
+        Me.labAdvCorrenteRiscaldatore.Name = "labAdvCorrenteRiscaldatore"
+        Me.labAdvCorrenteRiscaldatore.Size = New System.Drawing.Size(120, 30)
+        Me.labAdvCorrenteRiscaldatore.TabIndex = 2
+        Me.labAdvCorrenteRiscaldatore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'labDescAdvCorrenteRiscaldatore
+        '
+        Me.labDescAdvCorrenteRiscaldatore.AutoSize = True
+        Me.labDescAdvCorrenteRiscaldatore.Location = New System.Drawing.Point(9, 61)
+        Me.labDescAdvCorrenteRiscaldatore.Name = "labDescAdvCorrenteRiscaldatore"
+        Me.labDescAdvCorrenteRiscaldatore.Size = New System.Drawing.Size(176, 19)
+        Me.labDescAdvCorrenteRiscaldatore.TabIndex = 1
+        Me.labDescAdvCorrenteRiscaldatore.Text = "Corrente Riscaldatore"
+        '
+        'cbAdvAbilitazioneCorrenteRiscaldatore
+        '
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore.AutoSize = True
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore.Location = New System.Drawing.Point(9, 28)
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore.Name = "cbAdvAbilitazioneCorrenteRiscaldatore"
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore.Size = New System.Drawing.Size(117, 23)
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore.TabIndex = 0
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore.Text = "Abilitazione"
+        Me.cbAdvAbilitazioneCorrenteRiscaldatore.UseVisualStyleBackColor = True
+        '
+        'gbZfasCorrenteRiscaldatore
+        '
+        Me.gbZfasCorrenteRiscaldatore.Controls.Add(Me.labZfasCorrenteRiscaldatore)
+        Me.gbZfasCorrenteRiscaldatore.Controls.Add(Me.labDescZfasCorrenteRiscaldatore)
+        Me.gbZfasCorrenteRiscaldatore.Controls.Add(Me.cbZfasAbilitazioneCorrenteRiscaldatore)
+        Me.gbZfasCorrenteRiscaldatore.Controls.Add(Me.labUdmZfasCorrenteRiscaldatore)
+        Me.gbZfasCorrenteRiscaldatore.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbZfasCorrenteRiscaldatore.Location = New System.Drawing.Point(8, 401)
+        Me.gbZfasCorrenteRiscaldatore.Margin = New System.Windows.Forms.Padding(5)
+        Me.gbZfasCorrenteRiscaldatore.Name = "gbZfasCorrenteRiscaldatore"
+        Me.gbZfasCorrenteRiscaldatore.Padding = New System.Windows.Forms.Padding(5)
+        Me.gbZfasCorrenteRiscaldatore.Size = New System.Drawing.Size(440, 95)
+        Me.gbZfasCorrenteRiscaldatore.TabIndex = 3
+        Me.gbZfasCorrenteRiscaldatore.TabStop = False
+        Me.gbZfasCorrenteRiscaldatore.Text = "ZFAS - Misura Corrente Riscaldatore"
+        '
+        'labZfasCorrenteRiscaldatore
+        '
+        Me.labZfasCorrenteRiscaldatore.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.labZfasCorrenteRiscaldatore.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.labZfasCorrenteRiscaldatore.Location = New System.Drawing.Point(280, 55)
+        Me.labZfasCorrenteRiscaldatore.Margin = New System.Windows.Forms.Padding(5)
+        Me.labZfasCorrenteRiscaldatore.Name = "labZfasCorrenteRiscaldatore"
+        Me.labZfasCorrenteRiscaldatore.Size = New System.Drawing.Size(120, 30)
+        Me.labZfasCorrenteRiscaldatore.TabIndex = 2
+        Me.labZfasCorrenteRiscaldatore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'labDescZfasCorrenteRiscaldatore
+        '
+        Me.labDescZfasCorrenteRiscaldatore.AutoSize = True
+        Me.labDescZfasCorrenteRiscaldatore.Location = New System.Drawing.Point(9, 61)
+        Me.labDescZfasCorrenteRiscaldatore.Name = "labDescZfasCorrenteRiscaldatore"
+        Me.labDescZfasCorrenteRiscaldatore.Size = New System.Drawing.Size(176, 19)
+        Me.labDescZfasCorrenteRiscaldatore.TabIndex = 1
+        Me.labDescZfasCorrenteRiscaldatore.Text = "Corrente Riscaldatore"
+        '
+        'cbZfasAbilitazioneCorrenteRiscaldatore
+        '
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore.AutoSize = True
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore.Location = New System.Drawing.Point(9, 28)
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore.Name = "cbZfasAbilitazioneCorrenteRiscaldatore"
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore.Size = New System.Drawing.Size(117, 23)
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore.TabIndex = 0
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore.Text = "Abilitazione"
+        Me.cbZfasAbilitazioneCorrenteRiscaldatore.UseVisualStyleBackColor = True
+        '
+        'labUdmZfasCorrenteRiscaldatore
+        '
+        Me.labUdmZfasCorrenteRiscaldatore.AutoSize = True
+        Me.labUdmZfasCorrenteRiscaldatore.Location = New System.Drawing.Point(400, 61)
+        Me.labUdmZfasCorrenteRiscaldatore.Name = "labUdmZfasCorrenteRiscaldatore"
+        Me.labUdmZfasCorrenteRiscaldatore.Size = New System.Drawing.Size(34, 19)
+        Me.labUdmZfasCorrenteRiscaldatore.TabIndex = 3
+        Me.labUdmZfasCorrenteRiscaldatore.Text = "mA"
+        '
+        'gbAdvLambda
+        '
+        Me.gbAdvLambda.Controls.Add(Me.labAdvIp)
+        Me.gbAdvLambda.Controls.Add(Me.labDescAdvIp)
+        Me.gbAdvLambda.Controls.Add(Me.labAdvLambda)
+        Me.gbAdvLambda.Controls.Add(Me.labDescAdvLambda)
+        Me.gbAdvLambda.Controls.Add(Me.labUdmAdvIp)
+        Me.gbAdvLambda.Controls.Add(Me.cbAdvAbilitazioneLambda)
+        Me.gbAdvLambda.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbAdvLambda.Location = New System.Drawing.Point(8, 10)
+        Me.gbAdvLambda.Margin = New System.Windows.Forms.Padding(5)
+        Me.gbAdvLambda.Name = "gbAdvLambda"
+        Me.gbAdvLambda.Padding = New System.Windows.Forms.Padding(5)
+        Me.gbAdvLambda.Size = New System.Drawing.Size(440, 132)
+        Me.gbAdvLambda.TabIndex = 3
+        Me.gbAdvLambda.TabStop = False
+        Me.gbAdvLambda.Text = "ADV - Misura Lambda / Ip"
+        '
+        'labAdvLambda
+        '
+        Me.labAdvLambda.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.labAdvLambda.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.labAdvLambda.Location = New System.Drawing.Point(280, 55)
+        Me.labAdvLambda.Margin = New System.Windows.Forms.Padding(5)
+        Me.labAdvLambda.Name = "labAdvLambda"
+        Me.labAdvLambda.Size = New System.Drawing.Size(120, 30)
+        Me.labAdvLambda.TabIndex = 2
+        Me.labAdvLambda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'labDescAdvLambda
+        '
+        Me.labDescAdvLambda.AutoSize = True
+        Me.labDescAdvLambda.Location = New System.Drawing.Point(9, 61)
+        Me.labDescAdvLambda.Name = "labDescAdvLambda"
+        Me.labDescAdvLambda.Size = New System.Drawing.Size(71, 19)
+        Me.labDescAdvLambda.TabIndex = 1
+        Me.labDescAdvLambda.Text = "Lambda"
+        '
+        'cbAdvAbilitazioneLambda
+        '
+        Me.cbAdvAbilitazioneLambda.AutoSize = True
+        Me.cbAdvAbilitazioneLambda.Location = New System.Drawing.Point(9, 28)
+        Me.cbAdvAbilitazioneLambda.Name = "cbAdvAbilitazioneLambda"
+        Me.cbAdvAbilitazioneLambda.Size = New System.Drawing.Size(117, 23)
+        Me.cbAdvAbilitazioneLambda.TabIndex = 0
+        Me.cbAdvAbilitazioneLambda.Text = "Abilitazione"
+        Me.cbAdvAbilitazioneLambda.UseVisualStyleBackColor = True
+        '
+        'gbZfasIp
+        '
+        Me.gbZfasIp.Controls.Add(Me.labZfasIpTb)
+        Me.gbZfasIp.Controls.Add(Me.labZfasIpEtas)
+        Me.gbZfasIp.Controls.Add(Me.labDescZfasIpTb)
+        Me.gbZfasIp.Controls.Add(Me.labDescZfasIpEtas)
+        Me.gbZfasIp.Controls.Add(Me.labUdmZfasIpTb)
+        Me.gbZfasIp.Controls.Add(Me.cbZfasAbilitationeIp)
+        Me.gbZfasIp.Controls.Add(Me.labUdmZfasIpEtas)
+        Me.gbZfasIp.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbZfasIp.Location = New System.Drawing.Point(8, 257)
+        Me.gbZfasIp.Margin = New System.Windows.Forms.Padding(5)
+        Me.gbZfasIp.Name = "gbZfasIp"
+        Me.gbZfasIp.Padding = New System.Windows.Forms.Padding(5)
+        Me.gbZfasIp.Size = New System.Drawing.Size(440, 134)
+        Me.gbZfasIp.TabIndex = 3
+        Me.gbZfasIp.TabStop = False
+        Me.gbZfasIp.Text = "ZFAS - Misura IpEtas / IpTb"
+        '
+        'labZfasIpEtas
+        '
+        Me.labZfasIpEtas.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.labZfasIpEtas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.labZfasIpEtas.Location = New System.Drawing.Point(280, 55)
+        Me.labZfasIpEtas.Margin = New System.Windows.Forms.Padding(5)
+        Me.labZfasIpEtas.Name = "labZfasIpEtas"
+        Me.labZfasIpEtas.Size = New System.Drawing.Size(120, 30)
+        Me.labZfasIpEtas.TabIndex = 2
+        Me.labZfasIpEtas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'labDescZfasIpEtas
+        '
+        Me.labDescZfasIpEtas.AutoSize = True
+        Me.labDescZfasIpEtas.Location = New System.Drawing.Point(9, 61)
+        Me.labDescZfasIpEtas.Name = "labDescZfasIpEtas"
+        Me.labDescZfasIpEtas.Size = New System.Drawing.Size(61, 19)
+        Me.labDescZfasIpEtas.TabIndex = 1
+        Me.labDescZfasIpEtas.Text = "Ip Etas"
+        '
+        'cbZfasAbilitationeIp
+        '
+        Me.cbZfasAbilitationeIp.AutoSize = True
+        Me.cbZfasAbilitationeIp.Location = New System.Drawing.Point(9, 28)
+        Me.cbZfasAbilitationeIp.Name = "cbZfasAbilitationeIp"
+        Me.cbZfasAbilitationeIp.Size = New System.Drawing.Size(117, 23)
+        Me.cbZfasAbilitationeIp.TabIndex = 0
+        Me.cbZfasAbilitationeIp.Text = "Abilitazione"
+        Me.cbZfasAbilitationeIp.UseVisualStyleBackColor = True
+        '
+        'labUdmZfasIpEtas
+        '
+        Me.labUdmZfasIpEtas.AutoSize = True
+        Me.labUdmZfasIpEtas.Location = New System.Drawing.Point(400, 61)
+        Me.labUdmZfasIpEtas.Name = "labUdmZfasIpEtas"
+        Me.labUdmZfasIpEtas.Size = New System.Drawing.Size(34, 19)
+        Me.labUdmZfasIpEtas.TabIndex = 3
+        Me.labUdmZfasIpEtas.Text = "mA"
+        '
+        'labUdmAdvIp
+        '
+        Me.labUdmAdvIp.AutoSize = True
+        Me.labUdmAdvIp.Location = New System.Drawing.Point(400, 96)
+        Me.labUdmAdvIp.Name = "labUdmAdvIp"
+        Me.labUdmAdvIp.Size = New System.Drawing.Size(34, 19)
+        Me.labUdmAdvIp.TabIndex = 3
+        Me.labUdmAdvIp.Text = "mA"
+        '
+        'labDescAdvIp
+        '
+        Me.labDescAdvIp.AutoSize = True
+        Me.labDescAdvIp.Location = New System.Drawing.Point(9, 96)
+        Me.labDescAdvIp.Name = "labDescAdvIp"
+        Me.labDescAdvIp.Size = New System.Drawing.Size(23, 19)
+        Me.labDescAdvIp.TabIndex = 1
+        Me.labDescAdvIp.Text = "Ip"
+        '
+        'labAdvIp
+        '
+        Me.labAdvIp.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.labAdvIp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.labAdvIp.Location = New System.Drawing.Point(280, 90)
+        Me.labAdvIp.Margin = New System.Windows.Forms.Padding(5)
+        Me.labAdvIp.Name = "labAdvIp"
+        Me.labAdvIp.Size = New System.Drawing.Size(120, 30)
+        Me.labAdvIp.TabIndex = 2
+        Me.labAdvIp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'labUdmZfasIpTb
+        '
+        Me.labUdmZfasIpTb.AutoSize = True
+        Me.labUdmZfasIpTb.Location = New System.Drawing.Point(400, 96)
+        Me.labUdmZfasIpTb.Name = "labUdmZfasIpTb"
+        Me.labUdmZfasIpTb.Size = New System.Drawing.Size(34, 19)
+        Me.labUdmZfasIpTb.TabIndex = 3
+        Me.labUdmZfasIpTb.Text = "mA"
+        '
+        'labDescZfasIpTb
+        '
+        Me.labDescZfasIpTb.AutoSize = True
+        Me.labDescZfasIpTb.Location = New System.Drawing.Point(9, 96)
+        Me.labDescZfasIpTb.Name = "labDescZfasIpTb"
+        Me.labDescZfasIpTb.Size = New System.Drawing.Size(47, 19)
+        Me.labDescZfasIpTb.TabIndex = 1
+        Me.labDescZfasIpTb.Text = "Ip Tb"
+        '
+        'labZfasIpTb
+        '
+        Me.labZfasIpTb.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.labZfasIpTb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.labZfasIpTb.Location = New System.Drawing.Point(280, 90)
+        Me.labZfasIpTb.Margin = New System.Windows.Forms.Padding(5)
+        Me.labZfasIpTb.Name = "labZfasIpTb"
+        Me.labZfasIpTb.Size = New System.Drawing.Size(120, 30)
+        Me.labZfasIpTb.TabIndex = 2
+        Me.labZfasIpTb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmDiagnostica
         '
@@ -1883,13 +2191,22 @@ Partial Class frmDiagnostica
         Me.tbDiagnostica.ResumeLayout(False)
         Me.tbIO.ResumeLayout(False)
         Me.tbMisurazioni.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
+        Me.gbErrorLog.ResumeLayout(False)
         Me.gbAzoto.ResumeLayout(False)
         Me.gbAzoto.PerformLayout()
         Me.gbAria.ResumeLayout(False)
         Me.gbAria.PerformLayout()
         Me.gbMisuraIsolamnento.ResumeLayout(False)
         Me.gbMisuraIsolamnento.PerformLayout()
+        Me.tbMisurazioni2.ResumeLayout(False)
+        Me.gbAdvCorrenteRiscaldatore.ResumeLayout(False)
+        Me.gbAdvCorrenteRiscaldatore.PerformLayout()
+        Me.gbZfasCorrenteRiscaldatore.ResumeLayout(False)
+        Me.gbZfasCorrenteRiscaldatore.PerformLayout()
+        Me.gbAdvLambda.ResumeLayout(False)
+        Me.gbAdvLambda.PerformLayout()
+        Me.gbZfasIp.ResumeLayout(False)
+        Me.gbZfasIp.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2029,7 +2346,7 @@ Partial Class frmDiagnostica
     Friend WithEvents gbAria As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents tbO2 As TextBox
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents gbErrorLog As GroupBox
     Friend WithEvents lblErrorLog As Label
     Friend WithEvents btnCleanLog As Button
     Friend WithEvents btnViewLog As Button
@@ -2044,4 +2361,29 @@ Partial Class frmDiagnostica
     Friend WithEvents btnArrestaErogazione As Button
     Friend WithEvents btnAvviaErogazione As Button
     Friend WithEvents tbMisurazioni2 As TabPage
+    Friend WithEvents gbZfasCorrenteRiscaldatore As GroupBox
+    Friend WithEvents labZfasCorrenteRiscaldatore As Label
+    Friend WithEvents labDescZfasCorrenteRiscaldatore As Label
+    Friend WithEvents cbZfasAbilitazioneCorrenteRiscaldatore As CheckBox
+    Friend WithEvents labUdmZfasCorrenteRiscaldatore As Label
+    Friend WithEvents gbAdvCorrenteRiscaldatore As GroupBox
+    Friend WithEvents labAdvCorrenteRiscaldatore As Label
+    Friend WithEvents labDescAdvCorrenteRiscaldatore As Label
+    Friend WithEvents cbAdvAbilitazioneCorrenteRiscaldatore As CheckBox
+    Friend WithEvents labUdmAdvCorrenteRiscaldatore As Label
+    Friend WithEvents gbAdvLambda As GroupBox
+    Friend WithEvents labAdvLambda As Label
+    Friend WithEvents labDescAdvLambda As Label
+    Friend WithEvents cbAdvAbilitazioneLambda As CheckBox
+    Friend WithEvents gbZfasIp As GroupBox
+    Friend WithEvents labZfasIpEtas As Label
+    Friend WithEvents labDescZfasIpEtas As Label
+    Friend WithEvents cbZfasAbilitationeIp As CheckBox
+    Friend WithEvents labUdmZfasIpEtas As Label
+    Friend WithEvents labAdvIp As Label
+    Friend WithEvents labDescAdvIp As Label
+    Friend WithEvents labUdmAdvIp As Label
+    Friend WithEvents labZfasIpTb As Label
+    Friend WithEvents labDescZfasIpTb As Label
+    Friend WithEvents labUdmZfasIpTb As Label
 End Class

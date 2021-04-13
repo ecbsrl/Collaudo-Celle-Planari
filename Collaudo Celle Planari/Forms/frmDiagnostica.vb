@@ -556,6 +556,12 @@ Public Class frmDiagnostica
                 ' Disattivo il relè 2.3
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento) = False
             End If
+        ElseIf tbMisurazioni2.Enabled Then
+            ' Controllo quali groupbox sono abilitati o meno
+            gbAdvCorrenteRiscaldatore.Enabled = Not (cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitationeIp.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked)
+            gbAdvLambda.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbZfasAbilitationeIp.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked)
+            gbZfasCorrenteRiscaldatore.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitationeIp.Checked)
+            gbZfasIp.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked)
         End If
         ' Scrive lo stato dell'uscita
         If (mGlobale.IOremoto.Scrivi) Then
