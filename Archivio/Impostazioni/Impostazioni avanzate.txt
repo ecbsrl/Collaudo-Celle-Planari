@@ -12,8 +12,8 @@ Offset LSU O2 / %	0,00
 Moltiplicatore LSU O2	1,000
 Offset ADV Lambda / -	0,000
 Moltiplicatore ADV Lambda	1,000
-Offset ADV Corrente Pumping / mA	0,000
-Moltiplicatore ADV Corrente Pumping	1,000
+Offset ADV Corrente Pumping / mA	-0,030
+Moltiplicatore ADV Corrente Pumping	1,101
 Offset ZFAS Corrente Pumping Etas / mA	0,000
 Moltiplicatore Corrente Pumping Etas	1,000
 Offset LSU Corrente Pumping TB / mA	0,000

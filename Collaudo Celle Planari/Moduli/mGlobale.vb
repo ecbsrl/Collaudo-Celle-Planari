@@ -19,7 +19,7 @@ Module mGlobale
     '+------------------------------------------------------------------------------+
     ' Costanti pubbliche
     Public Const DescrizioneMacchina = "MA.01946 - Banco collaudo celle planari per sonde WB"
-    Public Const VersioneSoftware = "2.0_20210217_DF"
+    Public Const VersioneSoftware = "2.0_20210423_DF"
 
     Public Const Porta_Trasduttore_Portata_O2 = "COM2"
     Public Const Porta_Trasduttore_Portata_N2 = "COM5"

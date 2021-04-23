@@ -55,7 +55,7 @@
 
         MisureAdv = mGestioneSetpointMisure.MisuraTensione(tensione)
         lambda = ((tensione * (15.04 / 5) + 7.35) / 14.7) * mImpostazioniAvanzate.MoltiplicatoreAdvLambda + mImpostazioniAvanzate.OffsetAdvLambda
-        ip = -0.3221 * (lambda * lambda) + 1.6713 * lambda - 1.3069
+        ip = -0.268 * (lambda * lambda) + 1.4142 * lambda - 1.1269
     End Function
 
 
