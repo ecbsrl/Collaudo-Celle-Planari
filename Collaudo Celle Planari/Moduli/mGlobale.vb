@@ -44,7 +44,7 @@ Module mGlobale
     Public Lambda As New cAlmLed
 
     ' Variabili read only
-    Public ReadOnly BasePath As String = Left(Directory.GetCurrentDirectory, Directory.GetCurrentDirectory.IndexOf("Planari 2021") + 18)
+    Public ReadOnly BasePath As String = Left(Directory.GetCurrentDirectory, Directory.GetCurrentDirectory.IndexOf("Planari") + 7)
     Public ReadOnly NomeFileDataTaratura As String = BasePath & "\Archivio\Impostazioni\Data ultima taratura.txt"
     Public ReadOnly NomeFileImpostazioniAvanzate As String = BasePath & "\Archivio\Impostazioni\Impostazioni avanzate.txt"
     Public ReadOnly NomeFileImpostazioniGenerali As String = BasePath & "\Archivio\Impostazioni\Impostazioni generali.txt"

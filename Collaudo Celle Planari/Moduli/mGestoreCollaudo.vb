@@ -26,10 +26,11 @@ Module mGestoreCollaudo
         LSU4_9_MisuraO2 = 20
         ' Misura specifica per ADV
         ADV_MisuraLambda = 30
-        ADV_MisuraCorrente = 31
+        ADV_MisuraCorrenteRiscaldatore = 31
         ' Misura specifica per ZFAS
-        ZFAS_MisuraCorrenteEtas = 40
-        ZFAS_MisuraCorrenteTB = 41
+        ZFAS_PreRiscaldamento = 40
+        ZFAS_MisuraCorrenteRiscaldatore = 41
+        ZFAS_MisuraCorrenteEtas = 42
         ' Valori nuovamente comuni
         MisuraIsolamentoRiscaldatore = 50
         RaffreddamentoPezzo = 51
@@ -166,12 +167,40 @@ Module mGestoreCollaudo
                     End If
                 Case eFase.ADV_MisuraLambda
                     DescrizioneFase = DescrizioneFase & "ADV - Misura Lambda"
-                Case eFase.ADV_MisuraCorrente
-                    DescrizioneFase = DescrizioneFase & "ADV - Misura Corrente"
+                    If _sottofase = 0 Then
+                        DescrizioneFase = DescrizioneFase & " - Collego Relè"
+                    ElseIf _sottofase = 1 Then
+                        DescrizioneFase = DescrizioneFase & " - Riscaldamento Sonda - " & (CInt(_ricetta.Tempo_Riscaldamento.Valore) - (Date.Now - _t0Display).TotalSeconds).ToString("0")
+                    ElseIf _sottofase = 2 Then
+                        DescrizioneFase = DescrizioneFase & " - Verifica Risultati"
+                    ElseIf _sottofase = 3 Then
+                        DescrizioneFase = DescrizioneFase & " - Scollego Relè"
+                    ElseIf _sottofase = 4 Then
+                        DescrizioneFase = DescrizioneFase & " - Cambio Fase"
+                    End If
+                Case eFase.ADV_MisuraCorrenteRiscaldatore
+                    DescrizioneFase = DescrizioneFase & "ADV - Misura Corrente Riscaldatore"
                 Case eFase.ZFAS_MisuraCorrenteEtas
-                    DescrizioneFase = DescrizioneFase & "ZFAS - Misura Corrente Etas"
-                Case eFase.ZFAS_MisuraCorrenteTB
-                    DescrizioneFase = DescrizioneFase & "ZFAS - Misura Corrente TB"
+                    DescrizioneFase = DescrizioneFase & "ZFAS - Misura Corrente Pumping"
+                    If _sottofase = 0 Then
+                        DescrizioneFase = DescrizioneFase & " - Collego Relè 1"
+                    ElseIf _sottofase = 1 Then
+                        DescrizioneFase = DescrizioneFase & " - Collego Relè 2"
+                    ElseIf _sottofase = 2 Then
+                        DescrizioneFase = DescrizioneFase & " - Erogo Miscela"
+                    ElseIf _sottofase = 3 Then
+                        DescrizioneFase = DescrizioneFase & " - Riscaldamento Sonda - " & (CInt(_ricetta.Tempo_Riscaldamento.Valore) - (Date.Now - _t0Display).TotalSeconds).ToString("0")
+                    ElseIf _sottofase = 4 Then
+                        DescrizioneFase = DescrizioneFase & " - Verifica Risultati"
+                    ElseIf _sottofase = 5 Then
+                        DescrizioneFase = DescrizioneFase & " - Scollego Relè"
+                    ElseIf _sottofase = 6 Then
+                        DescrizioneFase = DescrizioneFase & " - Cambio Fase"
+                    End If
+                Case eFase.ZFAS_PreRiscaldamento
+                    DescrizioneFase = DescrizioneFase & "ZFAS - Pre-Riscaldamento"
+                Case eFase.ZFAS_MisuraCorrenteRiscaldatore
+                    DescrizioneFase = DescrizioneFase & "ZFAS - Misura Corrente Riscaldatore"
                 Case eFase.MisuraIsolamentoRiscaldatore
                     DescrizioneFase = DescrizioneFase & "Misura Isolamento Riscaldatore/Cella"
                 Case eFase.RaffreddamentoPezzo
@@ -701,7 +730,7 @@ Module mGestoreCollaudo
                         Case "ADV"
                             _fase = eFase.ADV_MisuraLambda
                         Case Else
-                            _fase = eFase.ZFAS_MisuraCorrenteEtas
+                            _fase = eFase.ZFAS_PreRiscaldamento
                     End Select
                 End If
             Case eFase.LSU4_9_MisuraO2
@@ -714,23 +743,25 @@ Module mGestoreCollaudo
                 If CBool(_ricetta.Adv_Lambda_Abilitazione.Valore) = True Then
                     FaseAdvMisuraLambda()
                 Else
-                    _fase = eFase.ADV_MisuraCorrente
+                    _fase = eFase.ADV_MisuraCorrenteRiscaldatore
                 End If
-            Case eFase.ADV_MisuraCorrente
+            Case eFase.ADV_MisuraCorrenteRiscaldatore
                 If CBool(_ricetta.Adv_Ip_Abilitazione.Valore) = True Then
-                    FaseAdvMisuraIP()
+                    FaseAdvMisuraCorrenteRiscaldatore()
                 Else
                     _fase = eFase.MisuraIsolamentoRiscaldatore
+                End If
+            Case eFase.ZFAS_PreRiscaldamento
+                FaseZfasPreriscaldamento()
+            Case eFase.ZFAS_MisuraCorrenteRiscaldatore
+                If CBool(_ricetta.Zfas_IpTB_Abilitazione.Valore) = True Then
+                    FaseZfasMisuraCorrenteRiscaldatore()
+                Else
+                    _fase = eFase.ZFAS_MisuraCorrenteEtas
                 End If
             Case eFase.ZFAS_MisuraCorrenteEtas
                 If CBool(_ricetta.Zfas_IpEtas_Abilitazione.Valore) = True Then
                     FaseZfasMisuraIpEtas()
-                Else
-                    _fase = eFase.ZFAS_MisuraCorrenteTB
-                End If
-            Case eFase.ZFAS_MisuraCorrenteTB
-                If CBool(_ricetta.Zfas_IpTB_Abilitazione.Valore) = True Then
-                    FaseZfasMisuraIpTB()
                 Else
                     _fase = eFase.MisuraIsolamentoRiscaldatore
                 End If
@@ -918,7 +949,7 @@ Module mGestoreCollaudo
         Else
             _risultati.Rheater.Esito = cValoreRisultato.eEsito.Disabilitato
         End If
-        '
+        ' Valori specifici LSU
         _risultati.Lsu_TemperaturaOperativa.Minimo = CSng(_ricetta.Lsu_Temperatura_Operativa_Min.Valore)
         _risultati.Lsu_TemperaturaOperativa.Massimo = CSng(_ricetta.Lsu_Temperatura_Operativa_Max.Valore)
         _risultati.Lsu_TemperaturaOperativa.Valore = 0
@@ -937,15 +968,6 @@ Module mGestoreCollaudo
             _risultati.Lsu_O2.Esito = cValoreRisultato.eEsito.Disabilitato
         End If
         '
-        _risultati.CorrenteRiscaldatore.Minimo = CSng(_ricetta.Corrente_Riscaldatore_Min.Valore)
-        _risultati.CorrenteRiscaldatore.Massimo = CSng(_ricetta.Corrente_Riscaldatore_Max.Valore)
-        _risultati.CorrenteRiscaldatore.Valore = 0
-        If CBool(_ricetta.Corrente_Riscaldatore_Abilitazione.Valore) = True Then
-            _risultati.CorrenteRiscaldatore.Esito = cValoreRisultato.eEsito.Sconosciuto
-        Else
-            _risultati.CorrenteRiscaldatore.Esito = cValoreRisultato.eEsito.Disabilitato
-        End If
-        '
         _risultati.Lsu_ResistenzaCalibrazione.Minimo = CSng(_ricetta.Lsu_Resistenza_Calibrazione_Min.Valore)
         _risultati.Lsu_ResistenzaCalibrazione.Massimo = CSng(_ricetta.Lsu_Resistenza_Calibrazione_Max.Valore)
         _risultati.Lsu_ResistenzaCalibrazione.Valore = 0
@@ -953,6 +975,51 @@ Module mGestoreCollaudo
             _risultati.Lsu_ResistenzaCalibrazione.Esito = cValoreRisultato.eEsito.Sconosciuto
         Else
             _risultati.Lsu_ResistenzaCalibrazione.Esito = cValoreRisultato.eEsito.Disabilitato
+        End If
+        ' Valori specifici ADV
+        _risultati.ADVlambda.Minimo = CSng(_ricetta.Adv_Lambda_Min.Valore)
+        _risultati.ADVlambda.Massimo = CSng(_ricetta.Adv_Lambda_Max.Valore)
+        _risultati.ADVlambda.Valore = 0
+        If CBool(_ricetta.Adv_Lambda_Abilitazione.Valore) = True Then
+            _risultati.ADVlambda.Esito = cValoreRisultato.eEsito.Sconosciuto
+        Else
+            _risultati.ADVlambda.Esito = cValoreRisultato.eEsito.Disabilitato
+        End If
+        '
+        _risultati.ADVIp.Minimo = CSng(_ricetta.Adv_Ip_Min.Valore)
+        _risultati.ADVIp.Massimo = CSng(_ricetta.Adv_Ip_Max.Valore)
+        _risultati.ADVIp.Valore = 0
+        If CBool(_ricetta.Adv_Ip_Abilitazione.Valore) = True Then
+            _risultati.ADVIp.Esito = cValoreRisultato.eEsito.Sconosciuto
+        Else
+            _risultati.ADVIp.Esito = cValoreRisultato.eEsito.Disabilitato
+        End If
+        ' Valori specifici ZFAS
+        _risultati.ZfasIpEtas.Minimo = CSng(_ricetta.Zfas_IpEtas_Min.Valore)
+        _risultati.ZfasIpEtas.Massimo = CSng(_ricetta.Zfas_IpEtas_Max.Valore)
+        _risultati.ZfasIpEtas.Valore = 0
+        If CBool(_ricetta.Zfas_IpEtas_Abilitazione.Valore) = True Then
+            _risultati.ZfasIpEtas.Esito = cValoreRisultato.eEsito.Sconosciuto
+        Else
+            _risultati.ZfasIpEtas.Esito = cValoreRisultato.eEsito.Disabilitato
+        End If
+        '
+        _risultati.ZfasIpTB.Minimo = CSng(_ricetta.Zfas_IpTB_Min.Valore)
+        _risultati.ZfasIpTB.Massimo = CSng(_ricetta.Zfas_IpTB_Max.Valore)
+        _risultati.ZfasIpTB.Valore = 0
+        If CBool(_ricetta.Zfas_IpTB_Abilitazione.Valore) = True Then
+            _risultati.ZfasIpTB.Esito = cValoreRisultato.eEsito.Sconosciuto
+        Else
+            _risultati.ZfasIpTB.Esito = cValoreRisultato.eEsito.Disabilitato
+        End If
+        '
+        _risultati.CorrenteRiscaldatore.Minimo = CSng(_ricetta.Corrente_Riscaldatore_Min.Valore)
+        _risultati.CorrenteRiscaldatore.Massimo = CSng(_ricetta.Corrente_Riscaldatore_Max.Valore)
+        _risultati.CorrenteRiscaldatore.Valore = 0
+        If CBool(_ricetta.Corrente_Riscaldatore_Abilitazione.Valore) = True Then
+            _risultati.CorrenteRiscaldatore.Esito = cValoreRisultato.eEsito.Sconosciuto
+        Else
+            _risultati.CorrenteRiscaldatore.Esito = cValoreRisultato.eEsito.Disabilitato
         End If
         '
         _risultati.ResistenzaIsolamento.Minimo = CSng(_ricetta.Resistenza_Isolamento_Min.Valore)
@@ -1159,7 +1226,7 @@ Module mGestoreCollaudo
                         Case "ADV"
                             _fase = eFase.ADV_MisuraLambda
                         Case Else
-                            _fase = eFase.ZFAS_MisuraCorrenteEtas
+                            _fase = eFase.ZFAS_PreRiscaldamento
                     End Select
 
                     ' Memorizzo il tempo per visualizzare il countdown sul display
@@ -1361,25 +1428,450 @@ Module mGestoreCollaudo
 
 
     Private Sub FaseAdvMisuraLambda()
+        Dim ip As Double
+        Dim lambda As Double
+        Dim portataO2 As Single
+        Dim portataN2 As Single
+        Static t0 As Date
+        Static t1 As Date
 
+        ' Gestisce le sottofasi
+        Select Case _sottofase
+            Case 0
+                ' Attivo i relè 1.6 - 2.0 - 2.1
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U20_RelèConnDirettaLD) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U21_RelèVoltmetroLD) = True
+                ' Preparo la miscela di ossigeno ed azoto
+                portataO2 = CSng(_ricetta.Lsu_Flusso_Aria_Erogato.Valore) * (100 / System.Convert.ToSingle(mGlobale.Mass_Flow_Controller_O2.FondoScala))
+                If mGestioneSetpointMisure.SetPortataMFC_O2(portataO2) Then
+                    MsgBox("Errore nella scrittura del valore nel Mass Flow Controller O2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                End If
+                portataN2 = CSng(_ricetta.Lsu_Flusso_N2_Erogato.Valore) * (100 / System.Convert.ToSingle(mGlobale.Mass_Flow_Controller_N2.FondoScala))
+                If mGestioneSetpointMisure.SetPortataMFC_N2(portataN2) Then
+                    MsgBox("Errore nella scrittura del valore nel Mass Flow Controller N2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                End If
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Memorizza il tempo per aggiornare la temperatura
+                t1 = Date.Now
+                ' Passa alla sottofase 1
+                _sottofase = 1
+
+            Case 1  ' Attendo n secondi per mandare in temperatura la sonda
+                If ((Date.Now - t0).TotalSeconds > CDbl(_ricetta.Tempo_Riscaldamento.Valore)) Then
+                    ' Memorizza il tempo
+                    t0 = Date.Now
+                    ' Passa alla sottofase 2
+                    _sottofase = 2
+                End If
+                ' Ogni secondo mostro il valore lambda
+                If ((Date.Now - t1).TotalSeconds > 1) Then
+                    t1 = Date.Now
+                    ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                    If mGestioneSetpointMisure.MisureAdv(ip, lambda) Then
+                        MsgBox("Errore nella lettura della tensione dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    Else
+                        ' Acquisisco i valori
+                        _risultati.ADVlambda.Valore = lambda
+                        _risultati.ADVIp.Valore = ip
+                        ' Verifico i valori ottenuti
+                        _risultati.ADVlambda.Prova()
+                        _risultati.ADVIp.Prova()
+                        ' Visualizzo i risultati ottenuti
+                        frmCollaudo.VisualizzaRisultati()
+                    End If
+                    ' Visualizzo i risultati ottenuti
+                    frmCollaudo.VisualizzaRisultati()
+                End If
+
+            Case 2  ' Verifico i valori ottenuti
+                _risultati.ADVlambda.Prova()
+                _risultati.ADVIp.Prova()
+                ' Visualizzo i risultati ottenuti
+                frmCollaudo.VisualizzaRisultati()
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 3
+                _sottofase = 3
+
+            Case 3  ' Disattivo i relè
+                If (Date.Now - t0).TotalMilliseconds > 100 Then
+                    'mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U20_RelèConnDirettaLD) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U21_RelèVoltmetroLD) = False
+                    ' Arresto la miscela di ossigeno ed azoto
+                    If mGestioneSetpointMisure.SetPortataMFC_O2(0) Then
+                        MsgBox("Errore nella scrittura del valore nel Mass Flow Controller O2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    End If
+                    If mGestioneSetpointMisure.SetPortataMFC_N2(0) Then
+                        MsgBox("Errore nella scrittura del valore nel Mass Flow Controller N2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    End If
+                    ' Passa alla sottofase 4
+                    _sottofase = 4
+                End If
+
+            Case 4  ' Attesa Passo
+                If mGestoreCollaudo.CicloManuale Then
+                    ' Lampeggio rosso pulsante di avvio ciclo
+                    If _blink Then
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = True
+                    Else
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                    End If
+                    ' Se è premuto l'avvio ciclo
+                    If mGlobale.IOremoto.StatoIngresso(cIORemoto.eIngresso.I10_BtnAvvioCiclo) Then
+                        ' Passa al cambio fase
+                        _sottofase = 5
+                    End If
+                Else
+                    ' Passa al cambio fase
+                    _sottofase = 5
+                End If
+
+            Case 5  ' Cambio Fase
+                ' Spegnimento pulsante di avvio ciclo
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                ' Passa al test successivo
+                _fase = eFase.ADV_MisuraCorrenteRiscaldatore
+                _sottofase = 0
+        End Select
     End Sub
 
 
 
-    Private Sub FaseAdvMisuraIP()
+    Private Sub FaseAdvMisuraCorrenteRiscaldatore()
+        Static t0 As Date
+        Dim corrente As Double
 
+        ' Gestisce le sottofasi
+        Select Case _sottofase
+            Case 0
+                ' Attivo i relè 1.6 - 1.7
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U17_RelèRiscaldatoreLD) = True
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 1
+                _sottofase = 1
+
+            Case 1  ' Attendo 100 millisecondi prima di misurare la corrente
+                If (Date.Now - t0).TotalMilliseconds > 100 Then
+                    ' MODIFICA AGGIUNTA PER MEDIA ARITMETICA MISURA O2%
+                    For i = 0 To 5
+                        ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                        If mGestioneSetpointMisure.MisuraCorrente(10, corrente) Then
+                            MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                        Else
+                            ' Leggi la corrente assorbita dal riscaldatore
+                            _risultati.CorrenteRiscaldatore.Valore = corrente * 1000
+                        End If
+                        t0 = Date.Now
+                        Do
+                        Loop Until ((Date.Now - t0).TotalSeconds >= 0.2)
+                    Next
+                    ' Memorizza il tempo
+                    t0 = Date.Now
+                    ' Passa alla sottofase 2
+                    _sottofase = 2
+                End If
+
+            Case 2  ' Verifico il valore ottenuto
+                _risultati.CorrenteRiscaldatore.Prova()
+                ' Visualizzo i risultati ottenuti
+                frmCollaudo.VisualizzaRisultati()
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 3
+                _sottofase = 3
+
+            Case 3  ' Disattivo i relè
+                If (Date.Now - t0).TotalMilliseconds > 100 Then
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U17_RelèRiscaldatoreLD) = False
+                    ' Passa alla sottofase 4
+                    _sottofase = 4
+                End If
+
+            Case 4  ' Attesa Passo
+                If mGestoreCollaudo.CicloManuale Then
+                    ' Lampeggio rosso pulsante di avvio ciclo
+                    If _blink Then
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = True
+                    Else
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                    End If
+                    ' Se è premuto l'avvio ciclo
+                    If mGlobale.IOremoto.StatoIngresso(cIORemoto.eIngresso.I10_BtnAvvioCiclo) Then
+                        ' Passa al cambio fase
+                        _sottofase = 5
+                    End If
+                Else
+                    ' Passa al cambio fase
+                    _sottofase = 5
+                End If
+
+            Case 5  ' Cambio Fase
+                ' Spegnimento pulsante di avvio ciclo
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                ' Passa al test successivo
+                _fase = eFase.MisuraIsolamentoRiscaldatore
+                _sottofase = 0
+        End Select
+    End Sub
+
+
+
+    Private Sub FaseZfasPreriscaldamento()
+        Static t0 As Date
+
+        ' Gestisce le sottofasi
+        Select Case _sottofase
+            Case 0
+                ' Attivo i relè 2.2 - 2.3 - 2.4
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = True
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 1
+                _sottofase = 1
+
+            Case 1  ' Attendo 5 secondi prima di passare alla sottofase successiva
+                If (Date.Now - t0).TotalSeconds > 10 Then
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = False
+                    ' Memorizza il tempo
+                    t0 = Date.Now
+                    ' Passa alla sottofase 2
+                    _sottofase = 2
+                End If
+
+            Case 2  ' Disattivo i relè
+                If (Date.Now - t0).TotalMilliseconds > 500 Then
+                    ' Passa al test successivo
+                    _fase = eFase.ZFAS_MisuraCorrenteRiscaldatore
+                    _sottofase = 0
+                End If
+        End Select
     End Sub
 
 
 
     Private Sub FaseZfasMisuraIpEtas()
+        Dim ipEtas As Double
+        Dim ipTB As Double
+        Dim portataO2 As Single
+        Dim portataN2 As Single
+        Static t0 As Date
+        Static t1 As Date
+        'Dim corrente As Double
 
+        ' Gestisce le sottofasi
+        Select Case _sottofase
+            Case 0
+                ' Abilito il relè alimentazione test
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U25_RelèConnDirettaNTK) = True
+                ' Memorizzo il tempo per visualizzare il countdown sul display
+                _t0Display = Date.Now
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 1
+                _sottofase = 1
+
+            Case 1
+                ' Dopo 50 ms
+                If (Date.Now - t0).TotalMilliseconds > 50 Then
+                    ' Disabilito i relè del test precedente
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = False
+                    ' Memorizza il tempo
+                    t0 = Date.Now
+                    ' Passa alla sottofase 2
+                    _sottofase = 2
+                End If
+
+            Case 2
+                ' Dopo 50 ms
+                If (Date.Now - t0).TotalMilliseconds > 50 Then
+                    ' Collego il relè di misurazione
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U26_RelèAmperometroPinIpNTK) = True
+                    ' Preparo la miscela di ossigeno ed azoto
+                    portataO2 = CSng(_ricetta.Lsu_Flusso_Aria_Erogato.Valore) * (100 / System.Convert.ToSingle(mGlobale.Mass_Flow_Controller_O2.FondoScala))
+                    If mGestioneSetpointMisure.SetPortataMFC_O2(portataO2) Then
+                        MsgBox("Errore nella scrittura del valore nel Mass Flow Controller O2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    End If
+                    portataN2 = CSng(_ricetta.Lsu_Flusso_N2_Erogato.Valore) * (100 / System.Convert.ToSingle(mGlobale.Mass_Flow_Controller_N2.FondoScala))
+                    If mGestioneSetpointMisure.SetPortataMFC_N2(portataN2) Then
+                        MsgBox("Errore nella scrittura del valore nel Mass Flow Controller N2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    End If
+                    ' Memorizza il tempo
+                    t0 = Date.Now
+                    ' Memorizza il tempo per aggiornare la temperatura
+                    t1 = Date.Now
+                    ' Passa alla sottofase 3
+                    _sottofase = 3
+                End If
+
+            Case 3   ' Attendo n secondi per mandare in temperatura la sonda
+                If ((Date.Now - t0).TotalSeconds > CDbl(_ricetta.Tempo_Riscaldamento.Valore)) Then
+                    ' Memorizza il tempo
+                    t0 = Date.Now
+                    ' Passa alla sottofase 4
+                    _sottofase = 4
+                End If
+                ' Ogni secondo mostro il valore lambda
+                If ((Date.Now - t1).TotalSeconds > 1) Then
+                    t1 = Date.Now
+                    ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                    If mGestioneSetpointMisure.MisureZfas(ipEtas, ipTB) Then
+                        MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    Else
+                        ' Verifico i valori ottenuti
+                        _risultati.ZfasIpEtas.Valore = ipEtas
+                        _risultati.ZfasIpEtas.Prova()
+                        _risultati.ZfasIpTB.Valore = ipTB
+                        _risultati.ZfasIpTB.Prova()
+                        ' Visualizzo i risultati ottenuti
+                        frmCollaudo.VisualizzaRisultati()
+                    End If
+                    ' Visualizzo i risultati ottenuti
+                    frmCollaudo.VisualizzaRisultati()
+                End If
+
+            Case 4  ' Verifico i valori ottenuti
+                _risultati.ZfasIpEtas.Prova()
+                _risultati.ZfasIpTB.Prova()
+                ' Visualizzo i risultati ottenuti
+                frmCollaudo.VisualizzaRisultati()
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 5
+                _sottofase = 5
+
+            Case 5  ' Disattivo i relè
+                If (Date.Now - t0).TotalMilliseconds > 100 Then
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U25_RelèConnDirettaNTK) = False
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U26_RelèAmperometroPinIpNTK) = False
+                    ' Arresto la miscela di ossigeno ed azoto
+                    If mGestioneSetpointMisure.SetPortataMFC_O2(0) Then
+                        MsgBox("Errore nella scrittura del valore nel Mass Flow Controller O2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    End If
+                    If mGestioneSetpointMisure.SetPortataMFC_N2(0) Then
+                        MsgBox("Errore nella scrittura del valore nel Mass Flow Controller N2.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    End If
+                    ' Passa alla sottofase 6
+                    _sottofase = 6
+                End If
+
+            Case 6  ' Attesa Passo
+                If mGestoreCollaudo.CicloManuale Then
+                    ' Lampeggio rosso pulsante di avvio ciclo
+                    If _blink Then
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = True
+                    Else
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                    End If
+                    ' Se è premuto l'avvio ciclo
+                    If mGlobale.IOremoto.StatoIngresso(cIORemoto.eIngresso.I10_BtnAvvioCiclo) Then
+                        ' Passa al cambio fase
+                        _sottofase = 7
+                    End If
+                Else
+                    ' Passa al cambio fase
+                    _sottofase = 7
+                End If
+
+            Case 7  ' Cambio Fase
+                ' Spegnimento pulsante di avvio ciclo
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                ' Passa al test successivo
+                _fase = eFase.MisuraIsolamentoRiscaldatore
+                _sottofase = 0
+        End Select
     End Sub
 
 
 
-    Private Sub FaseZfasMisuraIpTB()
+    Private Sub FaseZfasMisuraCorrenteRiscaldatore()
+        Static t0 As Date
+        Dim corrente As Double
 
+        ' Gestisce le sottofasi
+        Select Case _sottofase
+            Case 0
+                ' Attivo i relè 2.2 - 2.3 - 2.4
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = True
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 1
+                _sottofase = 1
+
+            Case 1  ' Attendo 100 millisecondi prima di misurare la corrente
+                If (Date.Now - t0).TotalSeconds > 10 Then
+                    ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                    If mGestioneSetpointMisure.MisuraCorrente(10, corrente) Then
+                        MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                    Else
+                        ' Leggi la corrente assorbita dal riscaldatore
+                        _risultati.CorrenteRiscaldatore.Valore = corrente * 1000
+                    End If
+                    ' Memorizza il tempo
+                    t0 = Date.Now
+                    ' Passa alla sottofase 2
+                    _sottofase = 2
+                End If
+
+            Case 2  ' Verifico il valore ottenuto
+                _risultati.CorrenteRiscaldatore.Prova()
+                ' Visualizzo i risultati ottenuti
+                frmCollaudo.VisualizzaRisultati()
+                ' Memorizza il tempo
+                t0 = Date.Now
+                ' Passa alla sottofase 3
+                _sottofase = 3
+
+            Case 3  ' Disattivo i relè
+                If (Date.Now - t0).TotalMilliseconds > 100 Then
+                    ' Disattivo i relè solo se la prova Ip Etas è disabilitata
+                    If CBool(_ricetta.Zfas_IpEtas_Abilitazione.Valore) = False Then
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = False
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = False
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = False
+                    End If
+                    ' Passa alla sottofase 4
+                    _sottofase = 4
+                End If
+
+            Case 4  ' Attesa Passo
+                If mGestoreCollaudo.CicloManuale Then
+                    ' Lampeggio rosso pulsante di avvio ciclo
+                    If _blink Then
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = True
+                    Else
+                        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                    End If
+                    ' Se è premuto l'avvio ciclo
+                    If mGlobale.IOremoto.StatoIngresso(cIORemoto.eIngresso.I10_BtnAvvioCiclo) Then
+                        ' Passa al cambio fase
+                        _sottofase = 5
+                    End If
+                Else
+                    ' Passa al cambio fase
+                    _sottofase = 5
+                End If
+
+            Case 5  ' Cambio Fase
+                ' Spegnimento pulsante di avvio ciclo
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = False
+                ' Passa al test successivo
+                _fase = eFase.ZFAS_MisuraCorrenteEtas
+                _sottofase = 0
+        End Select
     End Sub
 
 
@@ -1398,7 +1890,7 @@ Module mGestoreCollaudo
                 _sottofase = 1
 
             Case 1  ' Passato 1s effettuo la misurazione
-                If ((Date.Now - t0).TotalSeconds > 1.5) Then
+                If ((Date.Now - t0).TotalSeconds > 3) Then
                     'For i = 0 To 4
                     If (mGestioneSetpointMisure.MisuraCorrente(0.0001, _corrente)) Then
                         MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
@@ -1517,6 +2009,7 @@ Module mGestoreCollaudo
                 t0 = Date.Now
                 ' Passo alla sottofase successiva
                 _sottofase = 1
+
             Case 1 ' Passato il tempo necessario apro la pinza e la campana per estrarre il pezzo
                 If (Date.Now - t0).TotalSeconds > 30 Then
                     mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U04_OnRaffreddamento) = False

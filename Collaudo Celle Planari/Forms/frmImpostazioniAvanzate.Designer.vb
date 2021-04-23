@@ -484,9 +484,9 @@ Partial Class frmImpostazioniAvanzate
         Me.labOffset7.Location = New System.Drawing.Point(15, 30)
         Me.labOffset7.Margin = New System.Windows.Forms.Padding(5)
         Me.labOffset7.Name = "labOffset7"
-        Me.labOffset7.Size = New System.Drawing.Size(132, 18)
+        Me.labOffset7.Size = New System.Drawing.Size(49, 18)
         Me.labOffset7.TabIndex = 0
-        Me.labOffset7.Text = "Offset - NL/minuto"
+        Me.labOffset7.Text = "Offset"
         '
         'tbMoltiplicatoreAdvLambda
         '
@@ -535,9 +535,9 @@ Partial Class frmImpostazioniAvanzate
         Me.labOffset8.Location = New System.Drawing.Point(15, 30)
         Me.labOffset8.Margin = New System.Windows.Forms.Padding(5)
         Me.labOffset8.Name = "labOffset8"
-        Me.labOffset8.Size = New System.Drawing.Size(72, 18)
+        Me.labOffset8.Size = New System.Drawing.Size(85, 18)
         Me.labOffset8.TabIndex = 0
-        Me.labOffset8.Text = "Offset / V"
+        Me.labOffset8.Text = "Offset / mA"
         '
         'tbMoltiplicatoreAdvCorrentePumping
         '
@@ -586,9 +586,9 @@ Partial Class frmImpostazioniAvanzate
         Me.labOffset9.Location = New System.Drawing.Point(15, 30)
         Me.labOffset9.Margin = New System.Windows.Forms.Padding(5)
         Me.labOffset9.Name = "labOffset9"
-        Me.labOffset9.Size = New System.Drawing.Size(94, 18)
+        Me.labOffset9.Size = New System.Drawing.Size(85, 18)
         Me.labOffset9.TabIndex = 0
-        Me.labOffset9.Text = "Offset / Ohm"
+        Me.labOffset9.Text = "Offset / mA"
         '
         'tbMoltiplicatoreZfasCorrentePumpingEtas
         '
@@ -637,9 +637,9 @@ Partial Class frmImpostazioniAvanzate
         Me.labOffset10.Location = New System.Drawing.Point(15, 30)
         Me.labOffset10.Margin = New System.Windows.Forms.Padding(5)
         Me.labOffset10.Name = "labOffset10"
-        Me.labOffset10.Size = New System.Drawing.Size(94, 18)
+        Me.labOffset10.Size = New System.Drawing.Size(85, 18)
         Me.labOffset10.TabIndex = 0
-        Me.labOffset10.Text = "Offset / Ohm"
+        Me.labOffset10.Text = "Offset / mA"
         '
         'tbMoltiplicatoreZfasCorrentePumpingTB
         '

@@ -119,14 +119,35 @@ Public Class frmCollaudo
         With dgvRisultati
             ' Disabilita il refresh
             .SuspendLayout()
-            ' Visualizza i valori
-            VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Val, dgvRisultati, 0)
-            VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Rheater, dgvRisultati, 1)
-            VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Lsu_TemperaturaOperativa, dgvRisultati, 2)
-            VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Lsu_O2, dgvRisultati, 3)
-            VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.CorrenteRiscaldatore, dgvRisultati, 4)
-            VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Lsu_ResistenzaCalibrazione, dgvRisultati, 5)
-            VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ResistenzaIsolamento, dgvRisultati, 6)
+            ' Visualizza i valori (in base alla cella in collaudo
+            Select Case mGestoreCollaudo.Lotto.Ricetta.TipologiaSonda.ValoreStringa
+                Case "LSU-4-9   "
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Val, dgvRisultati, 0)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Rheater, dgvRisultati, 1)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Lsu_TemperaturaOperativa, dgvRisultati, 2)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Lsu_O2, dgvRisultati, 3)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Lsu_ResistenzaCalibrazione, dgvRisultati, 4)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.CorrenteRiscaldatore, dgvRisultati, 5)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ResistenzaIsolamento, dgvRisultati, 6)
+
+                Case "ADV"
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Val, dgvRisultati, 0)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Rheater, dgvRisultati, 1)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ADVlambda, dgvRisultati, 2)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ADVIp, dgvRisultati, 3)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.CorrenteRiscaldatore, dgvRisultati, 4)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ResistenzaIsolamento, dgvRisultati, 5)
+
+                Case Else
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Val, dgvRisultati, 0)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.Rheater, dgvRisultati, 1)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ZfasIpEtas, dgvRisultati, 2)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ZfasIpTB, dgvRisultati, 3)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.CorrenteRiscaldatore, dgvRisultati, 4)
+                    VisualizzaValoreRisultato(mGestoreCollaudo.Risultati.ResistenzaIsolamento, dgvRisultati, 5)
+
+            End Select
+
             ' Riabilitazione del refresh
             .ResumeLayout(True)
         End With
@@ -334,22 +355,57 @@ Public Class frmCollaudo
             .EditMode = DataGridViewEditMode.EditProgrammatically
             ' Disabilita le selezioni multiple
             .MultiSelect = False
-            ' Stampa il simbolo dei valori
-            .Item(0, 0).Value = mGestoreCollaudo.Risultati.Val.Simbolo
-            .Item(0, 1).Value = mGestoreCollaudo.Risultati.Rheater.Simbolo
-            .Item(0, 2).Value = mGestoreCollaudo.Risultati.Lsu_TemperaturaOperativa.Simbolo
-            .Item(0, 3).Value = mGestoreCollaudo.Risultati.Lsu_O2.Simbolo
-            .Item(0, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Simbolo
-            .Item(0, 5).Value = mGestoreCollaudo.Risultati.Lsu_ResistenzaCalibrazione.Simbolo
-            .Item(0, 6).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Simbolo
-            ' Stampa la descrizione dei valori
-            .Item(1, 0).Value = mGestoreCollaudo.Risultati.Val.Descrizione
-            .Item(1, 1).Value = mGestoreCollaudo.Risultati.Rheater.Descrizione
-            .Item(1, 2).Value = mGestoreCollaudo.Risultati.Lsu_TemperaturaOperativa.Descrizione
-            .Item(1, 3).Value = mGestoreCollaudo.Risultati.Lsu_O2.Descrizione
-            .Item(1, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Descrizione
-            .Item(1, 5).Value = mGestoreCollaudo.Risultati.Lsu_ResistenzaCalibrazione.Descrizione
-            .Item(1, 6).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Descrizione
+            ' Visualizza le descrizioni (in base alla cella in collaudo
+            Select Case mGestoreCollaudo.Lotto.Ricetta.TipologiaSonda.ValoreStringa
+                Case "LSU-4-9   "
+                    ' Stampa il simbolo dei valori
+                    .Item(0, 0).Value = mGestoreCollaudo.Risultati.Val.Simbolo
+                    .Item(0, 1).Value = mGestoreCollaudo.Risultati.Rheater.Simbolo
+                    .Item(0, 2).Value = mGestoreCollaudo.Risultati.Lsu_TemperaturaOperativa.Simbolo
+                    .Item(0, 3).Value = mGestoreCollaudo.Risultati.Lsu_O2.Simbolo
+                    .Item(0, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Simbolo
+                    .Item(0, 5).Value = mGestoreCollaudo.Risultati.Lsu_ResistenzaCalibrazione.Simbolo
+                    .Item(0, 6).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Simbolo
+                    ' Stampa la descrizione dei valori
+                    .Item(1, 0).Value = mGestoreCollaudo.Risultati.Val.Descrizione
+                    .Item(1, 1).Value = mGestoreCollaudo.Risultati.Rheater.Descrizione
+                    .Item(1, 2).Value = mGestoreCollaudo.Risultati.Lsu_TemperaturaOperativa.Descrizione
+                    .Item(1, 3).Value = mGestoreCollaudo.Risultati.Lsu_O2.Descrizione
+                    .Item(1, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Descrizione
+                    .Item(1, 5).Value = mGestoreCollaudo.Risultati.Lsu_ResistenzaCalibrazione.Descrizione
+                    .Item(1, 6).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Descrizione
+
+                Case "ADV"
+                    .Item(0, 0).Value = mGestoreCollaudo.Risultati.Val.Simbolo
+                    .Item(0, 1).Value = mGestoreCollaudo.Risultati.Rheater.Simbolo
+                    .Item(0, 2).Value = mGestoreCollaudo.Risultati.ADVlambda.Simbolo
+                    .Item(0, 3).Value = mGestoreCollaudo.Risultati.ADVIp.Simbolo
+                    .Item(0, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Simbolo
+                    .Item(0, 5).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Simbolo
+                    ' Stampa la descrizione dei valori
+                    .Item(1, 0).Value = mGestoreCollaudo.Risultati.Val.Descrizione
+                    .Item(1, 1).Value = mGestoreCollaudo.Risultati.Rheater.Descrizione
+                    .Item(1, 2).Value = mGestoreCollaudo.Risultati.ADVlambda.Descrizione
+                    .Item(1, 3).Value = mGestoreCollaudo.Risultati.ADVIp.Descrizione
+                    .Item(1, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Descrizione
+                    .Item(1, 5).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Descrizione
+
+                Case Else
+                    .Item(0, 0).Value = mGestoreCollaudo.Risultati.Val.Simbolo
+                    .Item(0, 1).Value = mGestoreCollaudo.Risultati.Rheater.Simbolo
+                    .Item(0, 2).Value = mGestoreCollaudo.Risultati.ZfasIpEtas.Simbolo
+                    .Item(0, 3).Value = mGestoreCollaudo.Risultati.ZfasIpTB.Simbolo
+                    .Item(0, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Simbolo
+                    .Item(0, 5).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Simbolo
+                    ' Stampa la descrizione dei valori
+                    .Item(1, 0).Value = mGestoreCollaudo.Risultati.Val.Descrizione
+                    .Item(1, 1).Value = mGestoreCollaudo.Risultati.Rheater.Descrizione
+                    .Item(1, 2).Value = mGestoreCollaudo.Risultati.ZfasIpEtas.Descrizione
+                    .Item(1, 3).Value = mGestoreCollaudo.Risultati.ZfasIpTB.Descrizione
+                    .Item(1, 4).Value = mGestoreCollaudo.Risultati.CorrenteRiscaldatore.Descrizione
+                    .Item(1, 5).Value = mGestoreCollaudo.Risultati.ResistenzaIsolamento.Descrizione
+
+            End Select
             .ReadOnly = True
             .SelectionMode = DataGridViewSelectionMode.FullRowSelect
             ' Enable the refresh

@@ -518,11 +518,15 @@ Public Class cLotto
                              vbTab & risultati.PezzoRipassato.Descrizione &
                              vbTab & risultati.Val.Descrizione &
                              vbTab & risultati.Rheater.Descrizione &
+                             vbTab & risultati.CorrenteRiscaldatore.Descrizione &
+                             vbTab & risultati.ResistenzaIsolamento.Descrizione &
                              vbTab & risultati.Lsu_TemperaturaOperativa.Descrizione &
                              vbTab & risultati.Lsu_O2.Descrizione &
-                             vbTab & risultati.CorrenteRiscaldatore.Descrizione &
                              vbTab & risultati.Lsu_ResistenzaCalibrazione.Descrizione &
-                             vbTab & risultati.ResistenzaIsolamento.Descrizione)
+                             vbTab & risultati.ADVIp.Descrizione &
+                             vbTab & risultati.ADVlambda.Descrizione &
+                             vbTab & risultati.ZfasIpEtas.Descrizione &
+                             vbTab & risultati.ZfasIpTB.Descrizione)
                 ' Chiude il file
                 sw.Close()
                 sw = Nothing
@@ -536,11 +540,15 @@ Public Class cLotto
                          vbTab & risultati.PezzoRipassato.ValoreStringa &
                          vbTab & risultati.Val.ValoreStringa &
                          vbTab & risultati.Rheater.ValoreStringa &
+                         vbTab & risultati.CorrenteRiscaldatore.ValoreStringa &
+                         vbTab & risultati.ResistenzaIsolamento.ValoreStringa &
                          vbTab & risultati.Lsu_TemperaturaOperativa.ValoreStringa &
                          vbTab & risultati.Lsu_O2.ValoreStringa &
-                         vbTab & risultati.CorrenteRiscaldatore.ValoreStringa &
                          vbTab & risultati.Lsu_ResistenzaCalibrazione.ValoreStringa &
-                         vbTab & risultati.ResistenzaIsolamento.ValoreStringa)
+                         vbTab & risultati.ADVIp.ValoreStringa &
+                         vbTab & risultati.ADVlambda.ValoreStringa &
+                         vbTab & risultati.ZfasIpEtas.ValoreStringa &
+                         vbTab & risultati.ZfasIpTB.ValoreStringa)
             ' Chiude il file
             sw.Close()
             sw = Nothing
@@ -577,11 +585,15 @@ Public Class cLotto
                              vbTab & risultati.PezzoRipassato.Descrizione &
                              vbTab & risultati.Val.Descrizione &
                              vbTab & risultati.Rheater.Descrizione &
+                             vbTab & risultati.CorrenteRiscaldatore.Descrizione &
+                             vbTab & risultati.ResistenzaIsolamento.Descrizione &
                              vbTab & risultati.Lsu_TemperaturaOperativa.Descrizione &
                              vbTab & risultati.Lsu_O2.Descrizione &
-                             vbTab & risultati.CorrenteRiscaldatore.Descrizione &
                              vbTab & risultati.Lsu_ResistenzaCalibrazione.Descrizione &
-                             vbTab & risultati.ResistenzaIsolamento.Descrizione)
+                             vbTab & risultati.ADVIp.Descrizione &
+                             vbTab & risultati.ADVlambda.Descrizione &
+                             vbTab & risultati.ZfasIpEtas.Descrizione &
+                             vbTab & risultati.ZfasIpTB.Descrizione)
                 ' Chiude il file
                 sw.Close()
                 sw = Nothing
@@ -595,16 +607,20 @@ Public Class cLotto
                          vbTab & risultati.PezzoRipassato.ValoreStringa &
                          vbTab & risultati.Val.ValoreStringa &
                          vbTab & risultati.Rheater.ValoreStringa &
+                         vbTab & risultati.CorrenteRiscaldatore.ValoreStringa &
+                         vbTab & risultati.ResistenzaIsolamento.ValoreStringa &
                          vbTab & risultati.Lsu_TemperaturaOperativa.ValoreStringa &
                          vbTab & risultati.Lsu_O2.ValoreStringa &
-                         vbTab & risultati.CorrenteRiscaldatore.ValoreStringa &
                          vbTab & risultati.Lsu_ResistenzaCalibrazione.ValoreStringa &
-                         vbTab & risultati.ResistenzaIsolamento.ValoreStringa)
+                         vbTab & risultati.ADVIp.ValoreStringa &
+                         vbTab & risultati.ADVlambda.ValoreStringa &
+                         vbTab & risultati.ZfasIpEtas.ValoreStringa &
+                         vbTab & risultati.ZfasIpTB.ValoreStringa)
             ' Chiude il file
             sw.Close()
             sw = Nothing
             ' Restituisce False
-            SalvaRisultatiMaster = SalvaRisultatiMaster Or AggiornaExcelPezzoMaster(nomeRicettaMaster, nomeRisultatoMaster)
+            SalvaRisultatiMaster = False ' SalvaRisultatiMaster Or AggiornaExcelPezzoMaster(nomeRicettaMaster, nomeRisultatoMaster)
 
         Catch ex As Exception
             ' Chiude il file
@@ -779,19 +795,27 @@ Public Class cLotto
             Case cRisultati.eEsito.Buono
                 EsitoFACET = "BUONO"
             Case cRisultati.eEsito.ScartoVal
-                EsitoFACET = "1"
+                EsitoFACET = "Scarto Val"
             Case cRisultati.eEsito.ScartoRheater
-                EsitoFACET = "2"
+                EsitoFACET = "Scarto Rh"
             Case cRisultati.eEsito.Lsu_ScartoTemperaturaOperativa
-                EsitoFACET = "3"
+                EsitoFACET = "Scarto Temperatura"
             Case cRisultati.eEsito.Lsu_ScartoO2
-                EsitoFACET = "4"
+                EsitoFACET = "Scarto O2"
             Case cRisultati.eEsito.ScartoCorrenteRiscaldatore
-                EsitoFACET = "5"
+                EsitoFACET = "Scarto Ih"
             Case cRisultati.eEsito.Lsu_ScartoResistenzaCalibrazione
-                EsitoFACET = "6"
+                EsitoFACET = "Scarto Rcal"
             Case cRisultati.eEsito.ScartoResistenzaIsolamento
-                EsitoFACET = "7"
+                EsitoFACET = "Scarto Ri-h"
+            Case cRisultati.eEsito.Adv_ScartoIp
+                EsitoFACET = "Scarto ADV Ip"
+            Case cRisultati.eEsito.Adv_ScartoLambda
+                EsitoFACET = "Scarto ADV Lambda"
+            Case cRisultati.eEsito.Zfas_ScartoIpEtas
+                EsitoFACET = "Scarto Ip Etas"
+            Case cRisultati.eEsito.Zfas_ScartoIpTB
+                EsitoFACET = "Scarto Ip TB"
             Case Else
                 EsitoFACET = "???"
         End Select

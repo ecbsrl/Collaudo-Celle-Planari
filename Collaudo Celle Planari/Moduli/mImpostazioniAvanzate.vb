@@ -60,34 +60,34 @@ Module mImpostazioniAvanzate
     ' Misurazione ADV Lambda
     Public Const OffsetMinimoAdvLambda = -1
     Public Const OffsetMassimoAdvLambda = 1
-    Public Const DecimaliOffsetAdvLambda = 3
-    Public Const MoltiplicatoreMinimoAdvLambda = 0.9
-    Public Const MoltiplicatoreMassimoAdvLambda = 1.1
-    Public Const DecimaliMoltiplicatoreAdvLambda = 3
+    Public Const DecimaliOffsetAdvLambda = 4
+    Public Const MoltiplicatoreMinimoAdvLambda = 0.5
+    Public Const MoltiplicatoreMassimoAdvLambda = 1.5
+    Public Const DecimaliMoltiplicatoreAdvLambda = 4
 
     ' Misurazione ADV Corrente Pumping
     Public Const OffsetMinimoAdvCorrentePumping = -1
     Public Const OffsetMassimoAdvCorrentePumping = 1
-    Public Const DecimaliOffsetAdvCorrentePumping = 3
-    Public Const MoltiplicatoreMinimoAdvCorrentePumping = 0.9
-    Public Const MoltiplicatoreMassimoAdvCorrentePumping = 1.1
-    Public Const DecimaliMoltiplicatoreAdvCorrentePumping = 3
+    Public Const DecimaliOffsetAdvCorrentePumping = 4
+    Public Const MoltiplicatoreMinimoAdvCorrentePumping = 0.5
+    Public Const MoltiplicatoreMassimoAdvCorrentePumping = 1.5
+    Public Const DecimaliMoltiplicatoreAdvCorrentePumping = 4
 
     ' Misurazione ZFAS Corrente Pumping Etas
     Public Const OffsetMinimoZfasCorrentePumpingEtas = -1
     Public Const OffsetMassimoZfasCorrentePumpingEtas = 1
-    Public Const DecimaliOffsetZfasCorrentePumpingEtas = 3
-    Public Const MoltiplicatoreMinimoZfasCorrentePumpingEtas = 0.9
-    Public Const MoltiplicatoreMassimoZfasCorrentePumpingEtas = 1.1
-    Public Const DecimaliMoltiplicatoreZfasCorrentePumpingEtas = 3
+    Public Const DecimaliOffsetZfasCorrentePumpingEtas = 4
+    Public Const MoltiplicatoreMinimoZfasCorrentePumpingEtas = 0.5
+    Public Const MoltiplicatoreMassimoZfasCorrentePumpingEtas = 1.5
+    Public Const DecimaliMoltiplicatoreZfasCorrentePumpingEtas = 4
 
     ' Misurazione ZFAS Corrente Pumping To
     Public Const OffsetMinimoZfasCorrentePumpingTb = -1
     Public Const OffsetMassimoZfasCorrentePumpingTb = 1
-    Public Const DecimaliOffsetZfasCorrentePumpingTb = 3
-    Public Const MoltiplicatoreMinimoZfasCorrentePumpingTb = 0.9
-    Public Const MoltiplicatoreMassimoZfasCorrentePumpingTb = 1.1
-    Public Const DecimaliMoltiplicatoreZfasCorrentePumpingTb = 3
+    Public Const DecimaliOffsetZfasCorrentePumpingTb = 4
+    Public Const MoltiplicatoreMinimoZfasCorrentePumpingTb = 0.5
+    Public Const MoltiplicatoreMassimoZfasCorrentePumpingTb = 1.5
+    Public Const DecimaliMoltiplicatoreZfasCorrentePumpingTb = 4
 
 
     '+------------------------------------------------------------------------------+

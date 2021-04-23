@@ -201,32 +201,59 @@ Public Class frmDiagnostica
             ElseIf (oggettoChiamante Is pbUscitaDigitale4) Then
                 'indice = CType(4, mGestoreDIO.eUscita)
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U04_OnRaffreddamento) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U04_OnRaffreddamento)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale6) Then
+                'indice = CType(6, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale7) Then
+                'indice = CType(7, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U07_LedVerdiAvvio) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U07_LedVerdiAvvio)
             ElseIf (oggettoChiamante Is pbUscitaDigitale8) Then
                 'indice = CType(8, mGestoreDIO.eUscita)
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U06_LedRossiAvvio)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U10_LampBuono) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U10_LampBuono)
             ElseIf (oggettoChiamante Is pbUscitaDigitale9) Then
                 'indice = CType(9, mGestoreDIO.eUscita)
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U07_LedVerdiAvvio) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U07_LedVerdiAvvio)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U11_LampScarto) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U11_LampScarto)
             ElseIf (oggettoChiamante Is pbUscitaDigitale10) Then
                 'indice = CType(10, mGestoreDIO.eUscita)
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U10_LampBuono) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U10_LampBuono)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U12_Cicalino) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U12_Cicalino)
             ElseIf (oggettoChiamante Is pbUscitaDigitale11) Then
                 'indice = CType(11, mGestoreDIO.eUscita)
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U11_LampScarto) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U11_LampScarto)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U13_RelèMis13VS) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U13_RelèMis13VS)
             ElseIf (oggettoChiamante Is pbUscitaDigitale12) Then
                 'indice = CType(12, mGestoreDIO.eUscita)
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U12_Cicalino) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U12_Cicalino)
-            ElseIf (oggettoChiamante Is pbUscitaDigitale16) Then
-                'indice = CType(13, mGestoreDIO.eUscita)
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U13_RelèMis13VS) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U13_RelèMis13VS)
-            ElseIf (oggettoChiamante Is pbUscitaDigitale17) Then
-                'indice = CType(14, mGestoreDIO.eUscita)
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U14_RelèMisRiscaldatore) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U14_RelèMisRiscaldatore)
-            ElseIf (oggettoChiamante Is pbUscitaDigitale18) Then
-                'indice = CType(14, mGestoreDIO.eUscita)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale13) Then
+                'indice = CType(13, mGestoreDIO.eUscita)
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U15_RelèMisuraO2) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U15_RelèMisuraO2)
-            ElseIf (oggettoChiamante Is pbUscitaDigitale19) Then
+            ElseIf (oggettoChiamante Is pbUscitaDigitale14) Then
+                'indice = CType(14, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale15) Then
                 'indice = CType(15, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U17_RelèRiscaldatoreLD) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U17_RelèRiscaldatoreLD)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale16) Then
+                'indice = CType(16, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U20_RelèConnDirettaLD) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U20_RelèConnDirettaLD)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale17) Then
+                'indice = CType(17, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U21_RelèVoltmetroLD) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U21_RelèVoltmetroLD)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale18) Then
+                'indice = CType(18, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale19) Then
+                'indice = CType(19, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale20) Then
+                'indice = CType(20, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale21) Then
+                'indice = CType(21, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U25_RelèConnDirettaNTK) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U25_RelèConnDirettaNTK)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale22) Then
+                'indice = CType(22, mGestoreDIO.eUscita)
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U26_RelèAmperometroPinIpNTK) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U26_RelèAmperometroPinIpNTK)
+            ElseIf (oggettoChiamante Is pbUscitaDigitale23) Then
+                'indice = CType(23, mGestoreDIO.eUscita)
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento) = Not mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento)
             End If
             ' Scrive lo stato dell'uscita
@@ -282,21 +309,6 @@ Public Class frmDiagnostica
         tbMisurazioni.Enabled = False
     End Sub
 
-    Private Sub btnViewLog_Click(sender As Object, e As EventArgs) Handles btnViewLog.Click
-        If mGlobale.Lambda.LeggiErrore Then
-            MsgBox("Errore nella lettura del log del Lambda", CType(MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Errore")
-        End If
-        For i = 0 To 6
-            If (mGlobale.Lambda.CodiceErrore(i) <> "OK") Then
-                lblErrorLog.Text = lblErrorLog.Text & mGlobale.Lambda.CodiceErrore(i) & vbCrLf
-            End If
-        Next
-    End Sub
-
-    Private Sub btnCleanLog_Click(sender As Object, e As EventArgs) Handles btnCleanLog.Click
-        lblErrorLog.Text = ""
-    End Sub
-
     Private Sub tbN2_Validated(sender As Object, e As EventArgs) Handles tbN2.Validated
         Dim portata As Single
         ' Leggo il valore della text box N2
@@ -349,8 +361,6 @@ Public Class frmDiagnostica
 
     Private Sub tbMisurazioni_Leave(sender As Object, e As EventArgs) Handles tbMisurazioni.Leave
         ' Disattivo tutti i valori che ho utilizzato durante la fase di misurazione
-        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U00_DiscesaCampana) = False
-        mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U02_ChiusuraPinza) = False
         mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U13_RelèMis13VS) = False
         mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U14_RelèMisRiscaldatore) = False
         mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento) = False
@@ -376,15 +386,16 @@ Public Class frmDiagnostica
         Dim dblValore As Double
         Dim dblLetturaO2 As Double
         Dim dblLetturaN2 As Double
+        Dim iPumpingAdv As Double
+        Dim iPumpingEtas As Double
+        Dim iPumpingTb As Double
+        Dim lambda As Double
         Static b As Boolean
         Static t0 As Date
 
         ' Disabilita il timer
         tmrMonitor.Enabled = False
         ' Legge lo stato degli ingressi
-        'If (mGestoreDIO.LeggiIngressi) Then
-        '    MsgBox("Errore nella lettura dello stato degli ingressi digitali.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
-        'End If
         If (mGlobale.IOremoto.Leggi) Then
             MsgBox("Errore nella lettura degli ingressi dell'I/O Remoto.", CType(vbCritical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Errore")
         End If
@@ -443,33 +454,19 @@ Public Class frmDiagnostica
         End If
 
         ' Se siamo sul tab delle misurazioni ignoro il test I/O e verifico solo le misurazioni attivate
-        If tbMisurazioni.Enabled = True Then
+        If tbDiagnostica.SelectedIndex = 1 Then
             ' Controllo quali groupbox sono abilitati o meno
-            gbTensioneAlimentazione.Enabled = Not (cbAbilitazioneIsolamento.Checked Or cbAbilitazioneO2.Checked Or cbAbilitazioneRiscaldatore.Checked)
-            gbResistenzaRiscaldatore.Enabled = Not (cbAbilitazione13V.Checked Or cbAbilitazioneO2.Checked Or cbAbilitazioneIsolamento.Checked)
-            gbMisuraO2.Enabled = Not (cbAbilitazioneRiscaldatore.Checked Or cbAbilitazione13V.Checked Or cbAbilitazioneIsolamento.Checked)
-            gbMisuraIsolamnento.Enabled = Not (cbAbilitazione13V.Checked Or cbAbilitazioneO2.Checked Or cbAbilitazioneRiscaldatore.Checked)
+            gbTensioneAlimentazione.Enabled = Not (cbAbilitazioneIsolamento.Checked Or cbAbilitazioneRiscaldatore.Checked)
+            gbResistenzaRiscaldatore.Enabled = Not (cbAbilitazione13V.Checked Or cbAbilitazioneIsolamento.Checked)
+            gbMisuraIsolamnento.Enabled = Not (cbAbilitazione13V.Checked Or cbAbilitazioneRiscaldatore.Checked)
 
-            ' Aggiorno le letture di Azoto e Ossigeno
-            If mGlobale.Mass_Flow_Controller_O2.LeggiMisuraNl(dblLetturaO2) Then
-                MsgBox("Errore nella lettura del Mass Flow Controller O2.", CType(vbCritical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Errore")
-            End If
-            lblO2NL.Text = dblLetturaO2.ToString("0.000")
-            If mGlobale.Mass_Flow_Controller_N2.LeggiMisuraNl(dblLetturaN2) Then
-                MsgBox("Errore nella lettura del Mass Flow Controller N2.", CType(vbCritical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Errore")
-            End If
-            lblN2NL.Text = dblLetturaN2.ToString("0.000")
-            ' Aggiorno le percentuali di immissione dei due gas (se almeno uno dei due valori è diverso da zero)
-            If (dblLetturaN2 <> 0 Or dblLetturaO2 <> 0) Then
-                lblO2Percentuale.Text = ((dblLetturaO2 * 100) / (dblLetturaO2 + dblLetturaN2)).ToString("0.000")
-                lblN2Percentuale.Text = ((dblLetturaN2 * 100) / (dblLetturaN2 + dblLetturaO2)).ToString("0.000")
-            End If
+
             'Verifico abilitazione checkbox
             If (cbAbilitazione13V.Checked) Then
                 ' Attivo il relè 2.0
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U13_RelèMis13VS) = True
                 ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
-                If (mGlobale.Multimetro.MisuraTensioneDC(dblValore)) Then
+                If (mGestioneSetpointMisure.MisuraTensione(dblValore)) Then
                     MsgBox("Errore nella lettura della tensione dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
                 Else
                     If (dblValore > 5) Then
@@ -512,11 +509,50 @@ Public Class frmDiagnostica
             End If
 
             ' Verifico abilitazione checkbox
+            If (cbAbilitazioneIsolamento.Checked) Then
+                ' Attivo il relè 2.7
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento) = True
+                ' Effettuo misurazione della corrente
+                If (mGestioneSetpointMisure.MisuraCorrente(0.0001, dblValore)) Then
+                    MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                Else
+                    lblCorrDispersa.Text = dblValore.ToString("0.000")
+                End If
+            Else
+                ' Cancello il valore dalla label
+                lblCorrDispersa.Text = ""
+                ' Disattivo il relè 2.3
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento) = False
+            End If
+        ElseIf tbDiagnostica.SelectedIndex = 2 Then
+            ' Controllo quali groupbox sono abilitati o meno
+            gbAdvCorrenteRiscaldatore.Enabled = Not (cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitationeIp.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked Or cbAbilitazioneO2.Checked)
+            gbAdvLambda.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbZfasAbilitationeIp.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked Or cbAbilitazioneO2.Checked)
+            gbZfasCorrenteRiscaldatore.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitationeIp.Checked Or cbAbilitazioneO2.Checked)
+            gbZfasIp.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked Or cbAbilitazioneO2.Checked)
+            gbMisuraO2.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitationeIp.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked)
+
+
+            ' Aggiorno le letture di Azoto e Ossigeno
+            If mGlobale.Mass_Flow_Controller_O2.LeggiMisuraNl(dblLetturaO2) Then
+                MsgBox("Errore nella lettura del Mass Flow Controller O2.", CType(vbCritical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Errore")
+            End If
+            lblO2NL.Text = dblLetturaO2.ToString("0.000")
+            If mGlobale.Mass_Flow_Controller_N2.LeggiMisuraNl(dblLetturaN2) Then
+                MsgBox("Errore nella lettura del Mass Flow Controller N2.", CType(vbCritical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Errore")
+            End If
+            lblN2NL.Text = dblLetturaN2.ToString("0.000")
+            ' Aggiorno le percentuali di immissione dei due gas (se almeno uno dei due valori è diverso da zero)
+            If (dblLetturaN2 <> 0 Or dblLetturaO2 <> 0) Then
+                lblO2Percentuale.Text = ((dblLetturaO2 * 100) / (dblLetturaO2 + dblLetturaN2)).ToString("0.000")
+                lblN2Percentuale.Text = ((dblLetturaN2 * 100) / (dblLetturaN2 + dblLetturaO2)).ToString("0.000")
+            End If
+            ' Verifico abilitazione checkbox
             If (cbAbilitazioneO2.Checked) Then
                 ' Attivo il relè 2.2
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U15_RelèMisuraO2) = True
                 ' Effettuo misurazione della corrente
-                If (mGlobale.Multimetro.MisuraCorrenteDC(10, dblValore)) Then
+                If (mGestioneSetpointMisure.MisuraCorrente(10, dblValore)) Then
                     MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
                 Else
                     lblCorrRiscaldatore.Text = dblValore.ToString("0.000")
@@ -539,29 +575,107 @@ Public Class frmDiagnostica
                 ' Disattivo il relè 2.2
                 mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U15_RelèMisuraO2) = False
             End If
-
-            ' Verifico abilitazione checkbox
-            If (cbAbilitazioneIsolamento.Checked) Then
-                ' Attivo il relè 2.3
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento) = True
-                ' Effettuo misurazione della corrente
-                If (mGlobale.Multimetro.MisuraCorrenteDC(0.1, dblValore)) Then
-                    MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+            'Verifico abilitazione checkbox
+            If (cbAdvAbilitazioneLambda.Checked And
+                Not cbAdvAbilitazioneCorrenteRiscaldatore.Checked) Then
+                ' Attivo i relè 1.6 - 2.0 - 2.1
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U20_RelèConnDirettaLD) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U21_RelèVoltmetroLD) = True
+                ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                If (mGestioneSetpointMisure.MisuraTensione(dblValore)) Then
+                    MsgBox("Errore nella lettura della tensione dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
                 Else
-                    lblCorrDispersa.Text = dblValore.ToString("0.000")
+                    mGestioneSetpointMisure.MisureAdv(iPumpingAdv, lambda)
+                    ' Converti il valore di tensione nel relativo valore lambda
+                    'lambda = ((dblValore * (15.04 / 5) + 7.35) / 14.7) * 1.011
+                    labAdvLambda.Text = lambda.ToString("0.000")
+                    ' Ricava la corrente di pumping
+                    'iPumpingAdv = -0.3221 * (lambda * lambda) + 1.6713 * lambda - 1.3069
+                    labAdvIp.Text = iPumpingAdv.ToString("0.000")
                 End If
             Else
                 ' Cancello il valore dalla label
-                lblCorrDispersa.Text = ""
-                ' Disattivo il relè 2.3
-                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U27_RelèMisuraIsolamento) = False
+                labAdvLambda.Text = ""
+                labAdvIp.Text = ""
+                ' Disattivo i relè 1.6 (se non in uso per altre prove - 2.0 - 2.1
+                If Not cbAdvAbilitazioneCorrenteRiscaldatore.Checked Then
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = False
+                End If
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U20_RelèConnDirettaLD) = False
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U21_RelèVoltmetroLD) = False
             End If
-        ElseIf tbMisurazioni2.Enabled Then
-            ' Controllo quali groupbox sono abilitati o meno
-            gbAdvCorrenteRiscaldatore.Enabled = Not (cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitationeIp.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked)
-            gbAdvLambda.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbZfasAbilitationeIp.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked)
-            gbZfasCorrenteRiscaldatore.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitationeIp.Checked)
-            gbZfasIp.Enabled = Not (cbAdvAbilitazioneCorrenteRiscaldatore.Checked Or cbAdvAbilitazioneLambda.Checked Or cbZfasAbilitazioneCorrenteRiscaldatore.Checked)
+            'Verifico abilitazione checkbox
+            If (cbAdvAbilitazioneCorrenteRiscaldatore.Checked And
+                Not cbAdvAbilitazioneLambda.Checked) Then
+                ' Attivo i relè 1.6 - 1.7
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U17_RelèRiscaldatoreLD) = True
+                ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                If (mGestioneSetpointMisure.MisuraCorrente(10, dblValore)) Then
+                    MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                Else
+                    ' Leggi la corrente assorbita dal riscaldatore
+                    labAdvCorrenteRiscaldatore.Text = dblValore.ToString("0.000")
+                End If
+            Else
+                ' Cancello il valore dalla label
+                labAdvCorrenteRiscaldatore.Text = ""
+                ' Disattivo i relè 1.6 (se non in uso per altre prove) - 1.7
+                If Not cbAdvAbilitazioneLambda.Checked Then
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U16_RelèConnCellaLD) = False
+                End If
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U17_RelèRiscaldatoreLD) = False
+            End If
+            'Verifico abilitazione checkbox
+            If (cbZfasAbilitationeIp.Checked And
+                Not cbZfasAbilitazioneCorrenteRiscaldatore.Checked) Then
+                ' Attivo i relè 2.2 - 2.5 - 2.6
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U25_RelèConnDirettaNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U26_RelèAmperometroPinIpNTK) = True
+                ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                If (mGestioneSetpointMisure.MisureZfas(iPumpingEtas, iPumpingTb)) Then
+                    MsgBox("Errore nella lettura della tensione dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                Else
+                    labZfasIpEtas.Text = iPumpingEtas.ToString("0.000")
+                    labZfasIpTb.Text = iPumpingTb.ToString("0.000")
+                End If
+            Else
+                ' Cancello il valore dalla label
+                labZfasIpEtas.Text = ""
+                labZfasIpTb.Text = ""
+                ' Disattivo i relè 2.2 (se non in uso per altre prove) - 2.5 - 2.6
+                If (Not cbZfasAbilitazioneCorrenteRiscaldatore.Checked) Then
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = False
+                End If
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U25_RelèConnDirettaNTK) = False
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U26_RelèAmperometroPinIpNTK) = False
+            End If
+            'Verifico abilitazione checkbox
+            If (cbZfasAbilitazioneCorrenteRiscaldatore.Checked And
+                Not cbZfasAbilitationeIp.Checked) Then
+                ' Attivo i relè 2.2 - 2.3 - 2.4
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = True
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = True
+                ' Effettuo la misurazione della tensioe con il multimetro o avviso in caso di errore
+                If (mGestioneSetpointMisure.MisuraCorrente(10, dblValore)) Then
+                    MsgBox("Errore nella lettura della corrente dal multimetro.", CType(vbCritical + vbOKOnly, MsgBoxStyle), "Errore")
+                Else
+                    ' Converti il valore di tensione nel relativo valore lambda
+                    labZfasCorrenteRiscaldatore.Text = dblValore.ToString("0.000")
+                End If
+            Else
+                ' Cancello il valore dalla label
+                labZfasCorrenteRiscaldatore.Text = ""
+                ' Disattivo i relè 2.2 (se non in uso per altre prove) - 2.3 - 2.4
+                If (Not cbZfasAbilitationeIp.Checked) Then
+                    mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U22_RelèConnCellaNTK) = False
+                End If
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U23_RelèConnCellaPinIpNTK) = False
+                mGlobale.IOremoto.StatoUscita(cIORemoto.eUscita.U24_RelèRiscaldatoreNTK) = False
+            End If
         End If
         ' Scrive lo stato dell'uscita
         If (mGlobale.IOremoto.Scrivi) Then

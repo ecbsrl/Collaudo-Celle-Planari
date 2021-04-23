@@ -2,6 +2,7 @@
 Option Strict On
 
 Imports System
+Imports System.Globalization
 Imports System.IO
 Imports System.Net
 Imports System.Net.Sockets
@@ -131,12 +132,7 @@ Public Class cKeySight34465A
         ' Se lo strumento è connesso
         If (_connesso) Then
             ' Esegue il comando
-            If (risoluzione = 10) Then
-                MisuraCorrenteDC = EseguiComando("MEAS:CURR:DC? 10", True, 3, risposta)
-            Else
-                MisuraCorrenteDC = EseguiComando("MEAS:CURR:DC? 0.0001", True, 3, risposta)
-            End If
-
+            MisuraCorrenteDC = EseguiComando("MEAS:CURR:DC? " & risoluzione.ToString(CultureInfo.CreateSpecificCulture("en-US")), True, 3, risposta)
             If Not (MisuraCorrenteDC) Then
                 valore = Val(risposta)
             Else

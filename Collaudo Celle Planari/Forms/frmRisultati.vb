@@ -115,7 +115,7 @@ Public Class frmRisultati
                 worksheet.Cells(worksheet.Range("D14").Row, worksheet.Range("D14").Column).Value = _lotto.Ricetta.Rheater_Max.Valore
             End If
             ' Inserisco i parametri per le LSU 4.9
-            If (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "LSU-4-9") Then
+            If (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "LSU 4.9") Then
                 If (_lotto.Ricetta.Lsu_Temperatura_Operativa_Abilitazione.Valore) Then
                     worksheet.Cells(worksheet.Range("E11").Row, worksheet.Range("E11").Column).Value = (_lotto.Ricetta.Lsu_Temperatura_Operativa_Min.Valore + _lotto.Ricetta.Lsu_Temperatura_Operativa_Max.Valore) / 2
                     worksheet.Cells(worksheet.Range("E12").Row, worksheet.Range("E12").Column).Value = _lotto.Ricetta.Lsu_Temperatura_Operativa_Max.Valore - _lotto.Ricetta.Lsu_Temperatura_Operativa_Min.Valore
@@ -143,7 +143,7 @@ Public Class frmRisultati
                 If (_lotto.Ricetta.Resistenza_Isolamento_Abilitazione.Valore) Then
                     worksheet.Cells(worksheet.Range("I13").Row, worksheet.Range("I13").Column).Value = _lotto.Ricetta.Resistenza_Isolamento_Min.Valore
                 End If
-            ElseIf (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "LSU-ADV") Then
+            ElseIf (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "ADV") Then
                 If (_lotto.Ricetta.Adv_Lambda_Abilitazione.Valore) Then
                     worksheet.Cells(worksheet.Range("E11").Row, worksheet.Range("E11").Column).Value = (_lotto.Ricetta.Adv_Lambda_Min.Valore + _lotto.Ricetta.Adv_Lambda_Max.Valore) / 2
                     worksheet.Cells(worksheet.Range("E12").Row, worksheet.Range("E12").Column).Value = _lotto.Ricetta.Adv_Lambda_Max.Valore - _lotto.Ricetta.Adv_Lambda_Min.Valore
@@ -211,7 +211,7 @@ Public Class frmRisultati
                 risultati.Lsu_TemperaturaOperativa.Valore = campo(8)
                 risultati.Lsu_O2.Valore = campo(9)
                 risultati.Lsu_ResistenzaCalibrazione.Valore = campo(10)
-                ' LSU-ADV
+                ' ADV
                 risultati.ADVIp.Valore = campo(11)
                 risultati.ADVlambda.Valore = campo(12)
                 ' ZFAS-U2
@@ -231,7 +231,7 @@ Public Class frmRisultati
                         worksheet.Cells(15 + riga, 4).Value = risultati.Rheater.Valore
                     End If
                     ' LSU 4.9
-                    If (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "LSU-4-9") Then
+                    If (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "LSU 4.9") Then
                         If (_lotto.Ricetta.Lsu_Temperatura_Operativa_Abilitazione.Valore And risultati.Lsu_TemperaturaOperativa.Valore <> 0) Then
                             worksheet.Cells(15 + riga, 5).Value = risultati.Lsu_TemperaturaOperativa.Valore
                         End If
@@ -247,11 +247,11 @@ Public Class frmRisultati
                         If (_lotto.Ricetta.Resistenza_Isolamento_Abilitazione.Valore And risultati.ResistenzaIsolamento.Valore <> 0) Then
                             worksheet.Cells(15 + riga, 9).Value = risultati.ResistenzaIsolamento.Valore
                         End If
-                    ElseIf (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "LSU-ADV") Then
-                        If (_lotto.Ricetta.Adv_Lambda_Abilitazione.Valore And risultati.Lsu_TemperaturaOperativa.Valore <> 0) Then
+                    ElseIf (_lotto.Ricetta.TipologiaSonda.ValoreStringa = "ADV") Then
+                        If (_lotto.Ricetta.Adv_Lambda_Abilitazione.Valore) Then
                             worksheet.Cells(15 + riga, 5).Value = risultati.ADVlambda.Valore
                         End If
-                        If (_lotto.Ricetta.Adv_Ip_Abilitazione.Valore And risultati.Lsu_O2.Valore <> 0) Then
+                        If (_lotto.Ricetta.Adv_Ip_Abilitazione.Valore) Then
                             worksheet.Cells(15 + riga, 6).Value = risultati.ADVIp.Valore
                         End If
                         If (_lotto.Ricetta.Corrente_Riscaldatore_Abilitazione.Valore And risultati.CorrenteRiscaldatore.Valore <> 0) Then
@@ -261,10 +261,10 @@ Public Class frmRisultati
                             worksheet.Cells(15 + riga, 8).Value = risultati.ResistenzaIsolamento.Valore
                         End If
                     Else
-                        If (_lotto.Ricetta.Zfas_IpEtas_Abilitazione.Valore And risultati.Lsu_TemperaturaOperativa.Valore <> 0) Then
+                        If (_lotto.Ricetta.Zfas_IpEtas_Abilitazione.Valore) Then
                             worksheet.Cells(15 + riga, 5).Value = risultati.ZfasIpEtas.Valore
                         End If
-                        If (_lotto.Ricetta.Zfas_IpTB_Abilitazione.Valore And risultati.Lsu_O2.Valore <> 0) Then
+                        If (_lotto.Ricetta.Zfas_IpTB_Abilitazione.Valore) Then
                             worksheet.Cells(15 + riga, 6).Value = risultati.ZfasIpTB.Valore
                         End If
                         If (_lotto.Ricetta.Corrente_Riscaldatore_Abilitazione.Valore And risultati.CorrenteRiscaldatore.Valore <> 0) Then
@@ -323,19 +323,27 @@ Public Class frmRisultati
             Case cRisultati.eEsito.Buono
                 EsitoFACET = "BUONO"
             Case cRisultati.eEsito.ScartoVal
-                EsitoFACET = "1"
+                EsitoFACET = "Scarto Val"
             Case cRisultati.eEsito.ScartoRheater
-                EsitoFACET = "2"
+                EsitoFACET = "Scarto Rh"
             Case cRisultati.eEsito.Lsu_ScartoTemperaturaOperativa
-                EsitoFACET = "3"
+                EsitoFACET = "Scarto Temperatura"
             Case cRisultati.eEsito.Lsu_ScartoO2
-                EsitoFACET = "4"
+                EsitoFACET = "Scarto O2"
             Case cRisultati.eEsito.ScartoCorrenteRiscaldatore
-                EsitoFACET = "5"
+                EsitoFACET = "Scarto Ih"
             Case cRisultati.eEsito.Lsu_ScartoResistenzaCalibrazione
-                EsitoFACET = "6"
+                EsitoFACET = "Scarto Rcal"
             Case cRisultati.eEsito.ScartoResistenzaIsolamento
-                EsitoFACET = "7"
+                EsitoFACET = "Scarto Ri-h"
+            Case cRisultati.eEsito.Adv_ScartoIp
+                EsitoFACET = "Scarto ADV Ip"
+            Case cRisultati.eEsito.Adv_ScartoLambda
+                EsitoFACET = "Scarto ADV Lambda"
+            Case cRisultati.eEsito.Zfas_ScartoIpEtas
+                EsitoFACET = "Scarto Ip Etas"
+            Case cRisultati.eEsito.Zfas_ScartoIpTB
+                EsitoFACET = "Scarto Ip TB"
             Case Else
                 EsitoFACET = "???"
         End Select

@@ -832,7 +832,7 @@ Public Class cRicetta
 
         Me.Adv_Lambda_Min = New cValoreRicetta(cValoreRicetta.eTipo.ValoreSingle)
         Me.Adv_Lambda_Min.Descrizione = "ADV - Lambda Minimo"
-        Me.Adv_Lambda_Min.UnitàDiMisura = "mA"
+        Me.Adv_Lambda_Min.UnitàDiMisura = "-"
         Me.Adv_Lambda_Min.NumeroDecimali = 2
         Me.Adv_Lambda_Min.ValoreMinimo = 0
         Me.Adv_Lambda_Min.ValoreDefault = 1.4
@@ -841,7 +841,7 @@ Public Class cRicetta
 
         Me.Adv_Lambda_Max = New cValoreRicetta(cValoreRicetta.eTipo.ValoreSingle)
         Me.Adv_Lambda_Max.Descrizione = "ADV - Lambda Massimo"
-        Me.Adv_Lambda_Max.UnitàDiMisura = "mA"
+        Me.Adv_Lambda_Max.UnitàDiMisura = "-"
         Me.Adv_Lambda_Max.NumeroDecimali = 2
         Me.Adv_Lambda_Max.ValoreMassimo = 0
         Me.Adv_Lambda_Max.ValoreDefault = 1.46

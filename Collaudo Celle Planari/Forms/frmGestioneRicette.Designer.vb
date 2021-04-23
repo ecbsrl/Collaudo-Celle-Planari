@@ -80,7 +80,6 @@ Partial Class frmGestioneRicette
         Me.labUdmTargetO2 = New System.Windows.Forms.Label()
         Me.labTargetO2 = New System.Windows.Forms.Label()
         Me.labDescrTargetO2 = New System.Windows.Forms.Label()
-        Me.labDescrFlussoN2 = New System.Windows.Forms.Label()
         Me.chkResistenzaCalibrazione = New System.Windows.Forms.CheckBox()
         Me.labUDMResistenzaCalibrazione = New System.Windows.Forms.Label()
         Me.labResistenzaCalibrazioneMax = New System.Windows.Forms.Label()
@@ -91,11 +90,6 @@ Partial Class frmGestioneRicette
         Me.labO2Max = New System.Windows.Forms.Label()
         Me.labUDMO2 = New System.Windows.Forms.Label()
         Me.labO2Min = New System.Windows.Forms.Label()
-        Me.labUDMFlussoN2 = New System.Windows.Forms.Label()
-        Me.labFlussoN2 = New System.Windows.Forms.Label()
-        Me.labUDMFlussoAria = New System.Windows.Forms.Label()
-        Me.labFlussoAria = New System.Windows.Forms.Label()
-        Me.labDescrFlussoAria = New System.Windows.Forms.Label()
         Me.gbMisureZFAS = New System.Windows.Forms.GroupBox()
         Me.chkZfasIpTb = New System.Windows.Forms.CheckBox()
         Me.labUdmZfasIpTb = New System.Windows.Forms.Label()
@@ -121,6 +115,13 @@ Partial Class frmGestioneRicette
         Me.pdPrintDialog = New System.Windows.Forms.PrintDialog()
         Me.pdPrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.btnUscita = New System.Windows.Forms.Button()
+        Me.gbFlussi = New System.Windows.Forms.GroupBox()
+        Me.labDescrFlussoN2 = New System.Windows.Forms.Label()
+        Me.labUDMFlussoN2 = New System.Windows.Forms.Label()
+        Me.labFlussoN2 = New System.Windows.Forms.Label()
+        Me.labUDMFlussoAria = New System.Windows.Forms.Label()
+        Me.labFlussoAria = New System.Windows.Forms.Label()
+        Me.labDescrFlussoAria = New System.Windows.Forms.Label()
         Me.gbGestioneRicette.SuspendLayout()
         Me.tcParametriRicetta.SuspendLayout()
         Me.tpParametriRicetta1.SuspendLayout()
@@ -135,6 +136,7 @@ Partial Class frmGestioneRicette
         Me.gbMisureLSU.SuspendLayout()
         Me.gbMisureZFAS.SuspendLayout()
         Me.gbMisureADV.SuspendLayout()
+        Me.gbFlussi.SuspendLayout()
         Me.SuspendLayout()
         '
         'gbGestioneRicette
@@ -433,6 +435,7 @@ Partial Class frmGestioneRicette
         'tpParametriRicetta2
         '
         Me.tpParametriRicetta2.BackColor = System.Drawing.SystemColors.Control
+        Me.tpParametriRicetta2.Controls.Add(Me.gbFlussi)
         Me.tpParametriRicetta2.Controls.Add(Me.gbRiscaldamentoRaffreddamento)
         Me.tpParametriRicetta2.Controls.Add(Me.gbIheater)
         Me.tpParametriRicetta2.Controls.Add(Me.gbIsolamento)
@@ -454,7 +457,7 @@ Partial Class frmGestioneRicette
         Me.gbRiscaldamentoRaffreddamento.Controls.Add(Me.labDescrTempoRaffreddamento)
         Me.gbRiscaldamentoRaffreddamento.Controls.Add(Me.labTempoRaffreddamento)
         Me.gbRiscaldamentoRaffreddamento.Controls.Add(Me.labUDMTempoRaffreddamento)
-        Me.gbRiscaldamentoRaffreddamento.Location = New System.Drawing.Point(8, 132)
+        Me.gbRiscaldamentoRaffreddamento.Location = New System.Drawing.Point(8, 234)
         Me.gbRiscaldamentoRaffreddamento.Name = "gbRiscaldamentoRaffreddamento"
         Me.gbRiscaldamentoRaffreddamento.Size = New System.Drawing.Size(516, 93)
         Me.gbRiscaldamentoRaffreddamento.TabIndex = 2
@@ -531,7 +534,7 @@ Partial Class frmGestioneRicette
         Me.gbIheater.Controls.Add(Me.chkCorrenteRiscaldatore)
         Me.gbIheater.Controls.Add(Me.labUDMCorrenteRiscaldatore)
         Me.gbIheater.Controls.Add(Me.labCorrenteRiscaldatoreMin)
-        Me.gbIheater.Location = New System.Drawing.Point(8, 229)
+        Me.gbIheater.Location = New System.Drawing.Point(8, 331)
         Me.gbIheater.Name = "gbIheater"
         Me.gbIheater.Size = New System.Drawing.Size(516, 58)
         Me.gbIheater.TabIndex = 3
@@ -587,7 +590,7 @@ Partial Class frmGestioneRicette
         Me.gbIsolamento.Controls.Add(Me.chkResistenzaIsolamento)
         Me.gbIsolamento.Controls.Add(Me.labUDMResistenzaIsolamento)
         Me.gbIsolamento.Controls.Add(Me.labResistenzaIsolamentoMin)
-        Me.gbIsolamento.Location = New System.Drawing.Point(8, 291)
+        Me.gbIsolamento.Location = New System.Drawing.Point(8, 393)
         Me.gbIsolamento.Name = "gbIsolamento"
         Me.gbIsolamento.Size = New System.Drawing.Size(516, 58)
         Me.gbIsolamento.TabIndex = 4
@@ -760,7 +763,6 @@ Partial Class frmGestioneRicette
         Me.gbMisureLSU.Controls.Add(Me.labUdmTargetO2)
         Me.gbMisureLSU.Controls.Add(Me.labTargetO2)
         Me.gbMisureLSU.Controls.Add(Me.labDescrTargetO2)
-        Me.gbMisureLSU.Controls.Add(Me.labDescrFlussoN2)
         Me.gbMisureLSU.Controls.Add(Me.chkResistenzaCalibrazione)
         Me.gbMisureLSU.Controls.Add(Me.labUDMResistenzaCalibrazione)
         Me.gbMisureLSU.Controls.Add(Me.labResistenzaCalibrazioneMax)
@@ -771,14 +773,9 @@ Partial Class frmGestioneRicette
         Me.gbMisureLSU.Controls.Add(Me.labO2Max)
         Me.gbMisureLSU.Controls.Add(Me.labUDMO2)
         Me.gbMisureLSU.Controls.Add(Me.labO2Min)
-        Me.gbMisureLSU.Controls.Add(Me.labUDMFlussoN2)
-        Me.gbMisureLSU.Controls.Add(Me.labFlussoN2)
-        Me.gbMisureLSU.Controls.Add(Me.labUDMFlussoAria)
-        Me.gbMisureLSU.Controls.Add(Me.labFlussoAria)
-        Me.gbMisureLSU.Controls.Add(Me.labDescrFlussoAria)
         Me.gbMisureLSU.Location = New System.Drawing.Point(10, 9)
         Me.gbMisureLSU.Name = "gbMisureLSU"
-        Me.gbMisureLSU.Size = New System.Drawing.Size(516, 240)
+        Me.gbMisureLSU.Size = New System.Drawing.Size(516, 174)
         Me.gbMisureLSU.TabIndex = 0
         Me.gbMisureLSU.TabStop = False
         Me.gbMisureLSU.Text = "Misure LSU 4.9"
@@ -787,7 +784,7 @@ Partial Class frmGestioneRicette
         '
         Me.labResistenzaCalibrazioneMin.BackColor = System.Drawing.Color.White
         Me.labResistenzaCalibrazioneMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labResistenzaCalibrazioneMin.Location = New System.Drawing.Point(326, 198)
+        Me.labResistenzaCalibrazioneMin.Location = New System.Drawing.Point(326, 134)
         Me.labResistenzaCalibrazioneMin.Margin = New System.Windows.Forms.Padding(5, 5, 2, 5)
         Me.labResistenzaCalibrazioneMin.Name = "labResistenzaCalibrazioneMin"
         Me.labResistenzaCalibrazioneMin.Size = New System.Drawing.Size(60, 26)
@@ -799,7 +796,7 @@ Partial Class frmGestioneRicette
         '
         Me.labTempOperativaMax.BackColor = System.Drawing.Color.White
         Me.labTempOperativaMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labTempOperativaMax.Location = New System.Drawing.Point(394, 128)
+        Me.labTempOperativaMax.Location = New System.Drawing.Point(394, 64)
         Me.labTempOperativaMax.Margin = New System.Windows.Forms.Padding(5, 5, 2, 5)
         Me.labTempOperativaMax.Name = "labTempOperativaMax"
         Me.labTempOperativaMax.Size = New System.Drawing.Size(60, 26)
@@ -809,7 +806,7 @@ Partial Class frmGestioneRicette
         '
         'labUdmTargetO2
         '
-        Me.labUdmTargetO2.Location = New System.Drawing.Point(458, 92)
+        Me.labUdmTargetO2.Location = New System.Drawing.Point(458, 28)
         Me.labUdmTargetO2.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
         Me.labUdmTargetO2.Name = "labUdmTargetO2"
         Me.labUdmTargetO2.Size = New System.Drawing.Size(55, 26)
@@ -821,7 +818,7 @@ Partial Class frmGestioneRicette
         '
         Me.labTargetO2.BackColor = System.Drawing.Color.White
         Me.labTargetO2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labTargetO2.Location = New System.Drawing.Point(394, 92)
+        Me.labTargetO2.Location = New System.Drawing.Point(394, 28)
         Me.labTargetO2.Margin = New System.Windows.Forms.Padding(2, 5, 2, 5)
         Me.labTargetO2.Name = "labTargetO2"
         Me.labTargetO2.Size = New System.Drawing.Size(60, 26)
@@ -832,26 +829,16 @@ Partial Class frmGestioneRicette
         'labDescrTargetO2
         '
         Me.labDescrTargetO2.AutoSize = True
-        Me.labDescrTargetO2.Location = New System.Drawing.Point(8, 96)
+        Me.labDescrTargetO2.Location = New System.Drawing.Point(8, 32)
         Me.labDescrTargetO2.Margin = New System.Windows.Forms.Padding(5)
         Me.labDescrTargetO2.Name = "labDescrTargetO2"
         Me.labDescrTargetO2.Size = New System.Drawing.Size(76, 18)
         Me.labDescrTargetO2.TabIndex = 6
         Me.labDescrTargetO2.Text = "Target O2"
         '
-        'labDescrFlussoN2
-        '
-        Me.labDescrFlussoN2.AutoSize = True
-        Me.labDescrFlussoN2.Location = New System.Drawing.Point(8, 62)
-        Me.labDescrFlussoN2.Margin = New System.Windows.Forms.Padding(5)
-        Me.labDescrFlussoN2.Name = "labDescrFlussoN2"
-        Me.labDescrFlussoN2.Size = New System.Drawing.Size(222, 18)
-        Me.labDescrFlussoN2.TabIndex = 3
-        Me.labDescrFlussoN2.Text = "Flusso N2 Erogato (NL/minuto)"
-        '
         'chkResistenzaCalibrazione
         '
-        Me.chkResistenzaCalibrazione.Location = New System.Drawing.Point(8, 200)
+        Me.chkResistenzaCalibrazione.Location = New System.Drawing.Point(8, 136)
         Me.chkResistenzaCalibrazione.Margin = New System.Windows.Forms.Padding(5)
         Me.chkResistenzaCalibrazione.Name = "chkResistenzaCalibrazione"
         Me.chkResistenzaCalibrazione.Size = New System.Drawing.Size(286, 24)
@@ -861,7 +848,7 @@ Partial Class frmGestioneRicette
         '
         'labUDMResistenzaCalibrazione
         '
-        Me.labUDMResistenzaCalibrazione.Location = New System.Drawing.Point(458, 198)
+        Me.labUDMResistenzaCalibrazione.Location = New System.Drawing.Point(458, 134)
         Me.labUDMResistenzaCalibrazione.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
         Me.labUDMResistenzaCalibrazione.Name = "labUDMResistenzaCalibrazione"
         Me.labUDMResistenzaCalibrazione.Size = New System.Drawing.Size(55, 26)
@@ -873,7 +860,7 @@ Partial Class frmGestioneRicette
         '
         Me.labResistenzaCalibrazioneMax.BackColor = System.Drawing.Color.White
         Me.labResistenzaCalibrazioneMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labResistenzaCalibrazioneMax.Location = New System.Drawing.Point(394, 198)
+        Me.labResistenzaCalibrazioneMax.Location = New System.Drawing.Point(394, 134)
         Me.labResistenzaCalibrazioneMax.Margin = New System.Windows.Forms.Padding(5, 5, 2, 5)
         Me.labResistenzaCalibrazioneMax.Name = "labResistenzaCalibrazioneMax"
         Me.labResistenzaCalibrazioneMax.Size = New System.Drawing.Size(60, 26)
@@ -883,7 +870,7 @@ Partial Class frmGestioneRicette
         '
         'chkO2
         '
-        Me.chkO2.Location = New System.Drawing.Point(8, 165)
+        Me.chkO2.Location = New System.Drawing.Point(8, 101)
         Me.chkO2.Margin = New System.Windows.Forms.Padding(5)
         Me.chkO2.Name = "chkO2"
         Me.chkO2.Size = New System.Drawing.Size(163, 24)
@@ -893,7 +880,7 @@ Partial Class frmGestioneRicette
         '
         'labUDMTempOperativa
         '
-        Me.labUDMTempOperativa.Location = New System.Drawing.Point(458, 128)
+        Me.labUDMTempOperativa.Location = New System.Drawing.Point(458, 64)
         Me.labUDMTempOperativa.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
         Me.labUDMTempOperativa.Name = "labUDMTempOperativa"
         Me.labUDMTempOperativa.Size = New System.Drawing.Size(55, 26)
@@ -905,7 +892,7 @@ Partial Class frmGestioneRicette
         '
         Me.labTempOperativaMin.BackColor = System.Drawing.Color.White
         Me.labTempOperativaMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labTempOperativaMin.Location = New System.Drawing.Point(326, 128)
+        Me.labTempOperativaMin.Location = New System.Drawing.Point(326, 64)
         Me.labTempOperativaMin.Margin = New System.Windows.Forms.Padding(5, 5, 2, 5)
         Me.labTempOperativaMin.Name = "labTempOperativaMin"
         Me.labTempOperativaMin.Size = New System.Drawing.Size(60, 26)
@@ -915,7 +902,7 @@ Partial Class frmGestioneRicette
         '
         'chkTemperaturaOperativa
         '
-        Me.chkTemperaturaOperativa.Location = New System.Drawing.Point(8, 130)
+        Me.chkTemperaturaOperativa.Location = New System.Drawing.Point(8, 66)
         Me.chkTemperaturaOperativa.Margin = New System.Windows.Forms.Padding(5)
         Me.chkTemperaturaOperativa.Name = "chkTemperaturaOperativa"
         Me.chkTemperaturaOperativa.Size = New System.Drawing.Size(272, 24)
@@ -927,7 +914,7 @@ Partial Class frmGestioneRicette
         '
         Me.labO2Max.BackColor = System.Drawing.Color.White
         Me.labO2Max.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labO2Max.Location = New System.Drawing.Point(394, 163)
+        Me.labO2Max.Location = New System.Drawing.Point(394, 99)
         Me.labO2Max.Margin = New System.Windows.Forms.Padding(2, 5, 2, 5)
         Me.labO2Max.Name = "labO2Max"
         Me.labO2Max.Size = New System.Drawing.Size(60, 26)
@@ -937,7 +924,7 @@ Partial Class frmGestioneRicette
         '
         'labUDMO2
         '
-        Me.labUDMO2.Location = New System.Drawing.Point(458, 163)
+        Me.labUDMO2.Location = New System.Drawing.Point(458, 99)
         Me.labUDMO2.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
         Me.labUDMO2.Name = "labUDMO2"
         Me.labUDMO2.Size = New System.Drawing.Size(55, 26)
@@ -949,67 +936,13 @@ Partial Class frmGestioneRicette
         '
         Me.labO2Min.BackColor = System.Drawing.Color.White
         Me.labO2Min.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labO2Min.Location = New System.Drawing.Point(326, 163)
+        Me.labO2Min.Location = New System.Drawing.Point(326, 99)
         Me.labO2Min.Margin = New System.Windows.Forms.Padding(5, 5, 2, 5)
         Me.labO2Min.Name = "labO2Min"
         Me.labO2Min.Size = New System.Drawing.Size(60, 26)
         Me.labO2Min.TabIndex = 14
         Me.labO2Min.Text = "???"
         Me.labO2Min.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'labUDMFlussoN2
-        '
-        Me.labUDMFlussoN2.Location = New System.Drawing.Point(458, 58)
-        Me.labUDMFlussoN2.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
-        Me.labUDMFlussoN2.Name = "labUDMFlussoN2"
-        Me.labUDMFlussoN2.Size = New System.Drawing.Size(55, 26)
-        Me.labUDMFlussoN2.TabIndex = 5
-        Me.labUDMFlussoN2.Text = "?"
-        Me.labUDMFlussoN2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'labFlussoN2
-        '
-        Me.labFlussoN2.BackColor = System.Drawing.Color.White
-        Me.labFlussoN2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labFlussoN2.Location = New System.Drawing.Point(394, 58)
-        Me.labFlussoN2.Margin = New System.Windows.Forms.Padding(2, 5, 2, 5)
-        Me.labFlussoN2.Name = "labFlussoN2"
-        Me.labFlussoN2.Size = New System.Drawing.Size(60, 26)
-        Me.labFlussoN2.TabIndex = 4
-        Me.labFlussoN2.Text = "???"
-        Me.labFlussoN2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'labUDMFlussoAria
-        '
-        Me.labUDMFlussoAria.Location = New System.Drawing.Point(458, 24)
-        Me.labUDMFlussoAria.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
-        Me.labUDMFlussoAria.Name = "labUDMFlussoAria"
-        Me.labUDMFlussoAria.Size = New System.Drawing.Size(55, 26)
-        Me.labUDMFlussoAria.TabIndex = 2
-        Me.labUDMFlussoAria.Text = "?"
-        Me.labUDMFlussoAria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'labFlussoAria
-        '
-        Me.labFlussoAria.BackColor = System.Drawing.Color.White
-        Me.labFlussoAria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.labFlussoAria.Location = New System.Drawing.Point(394, 24)
-        Me.labFlussoAria.Margin = New System.Windows.Forms.Padding(5, 5, 2, 5)
-        Me.labFlussoAria.Name = "labFlussoAria"
-        Me.labFlussoAria.Size = New System.Drawing.Size(60, 26)
-        Me.labFlussoAria.TabIndex = 1
-        Me.labFlussoAria.Text = "???"
-        Me.labFlussoAria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'labDescrFlussoAria
-        '
-        Me.labDescrFlussoAria.AutoSize = True
-        Me.labDescrFlussoAria.Location = New System.Drawing.Point(8, 28)
-        Me.labDescrFlussoAria.Margin = New System.Windows.Forms.Padding(5)
-        Me.labDescrFlussoAria.Name = "labDescrFlussoAria"
-        Me.labDescrFlussoAria.Size = New System.Drawing.Size(230, 18)
-        Me.labDescrFlussoAria.TabIndex = 0
-        Me.labDescrFlussoAria.Text = "Flusso Aria Erogato (NL/minuto)"
         '
         'gbMisureZFAS
         '
@@ -1021,7 +954,7 @@ Partial Class frmGestioneRicette
         Me.gbMisureZFAS.Controls.Add(Me.labZfasIpTbMax)
         Me.gbMisureZFAS.Controls.Add(Me.labZfasIpEtasMin)
         Me.gbMisureZFAS.Controls.Add(Me.labZfasIpEtasMax)
-        Me.gbMisureZFAS.Location = New System.Drawing.Point(10, 361)
+        Me.gbMisureZFAS.Location = New System.Drawing.Point(10, 295)
         Me.gbMisureZFAS.Name = "gbMisureZFAS"
         Me.gbMisureZFAS.Size = New System.Drawing.Size(516, 100)
         Me.gbMisureZFAS.TabIndex = 2
@@ -1126,7 +1059,7 @@ Partial Class frmGestioneRicette
         Me.gbMisureADV.Controls.Add(Me.labAdvLambdaMax)
         Me.gbMisureADV.Controls.Add(Me.labAdvIpMin)
         Me.gbMisureADV.Controls.Add(Me.labAdvIpMax)
-        Me.gbMisureADV.Location = New System.Drawing.Point(10, 255)
+        Me.gbMisureADV.Location = New System.Drawing.Point(10, 189)
         Me.gbMisureADV.Name = "gbMisureADV"
         Me.gbMisureADV.Size = New System.Drawing.Size(516, 100)
         Me.gbMisureADV.TabIndex = 1
@@ -1299,6 +1232,85 @@ Partial Class frmGestioneRicette
         Me.btnUscita.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnUscita.UseVisualStyleBackColor = True
         '
+        'gbFlussi
+        '
+        Me.gbFlussi.Controls.Add(Me.labDescrFlussoN2)
+        Me.gbFlussi.Controls.Add(Me.labUDMFlussoN2)
+        Me.gbFlussi.Controls.Add(Me.labFlussoN2)
+        Me.gbFlussi.Controls.Add(Me.labUDMFlussoAria)
+        Me.gbFlussi.Controls.Add(Me.labFlussoAria)
+        Me.gbFlussi.Controls.Add(Me.labDescrFlussoAria)
+        Me.gbFlussi.Location = New System.Drawing.Point(8, 135)
+        Me.gbFlussi.Name = "gbFlussi"
+        Me.gbFlussi.Size = New System.Drawing.Size(516, 93)
+        Me.gbFlussi.TabIndex = 5
+        Me.gbFlussi.TabStop = False
+        Me.gbFlussi.Text = "Flussi"
+        '
+        'labDescrFlussoN2
+        '
+        Me.labDescrFlussoN2.AutoSize = True
+        Me.labDescrFlussoN2.Location = New System.Drawing.Point(6, 61)
+        Me.labDescrFlussoN2.Margin = New System.Windows.Forms.Padding(5)
+        Me.labDescrFlussoN2.Name = "labDescrFlussoN2"
+        Me.labDescrFlussoN2.Size = New System.Drawing.Size(222, 18)
+        Me.labDescrFlussoN2.TabIndex = 9
+        Me.labDescrFlussoN2.Text = "Flusso N2 Erogato (NL/minuto)"
+        '
+        'labUDMFlussoN2
+        '
+        Me.labUDMFlussoN2.Location = New System.Drawing.Point(456, 57)
+        Me.labUDMFlussoN2.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
+        Me.labUDMFlussoN2.Name = "labUDMFlussoN2"
+        Me.labUDMFlussoN2.Size = New System.Drawing.Size(55, 26)
+        Me.labUDMFlussoN2.TabIndex = 11
+        Me.labUDMFlussoN2.Text = "?"
+        Me.labUDMFlussoN2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'labFlussoN2
+        '
+        Me.labFlussoN2.BackColor = System.Drawing.Color.White
+        Me.labFlussoN2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.labFlussoN2.Location = New System.Drawing.Point(392, 57)
+        Me.labFlussoN2.Margin = New System.Windows.Forms.Padding(2, 5, 2, 5)
+        Me.labFlussoN2.Name = "labFlussoN2"
+        Me.labFlussoN2.Size = New System.Drawing.Size(60, 26)
+        Me.labFlussoN2.TabIndex = 10
+        Me.labFlussoN2.Text = "???"
+        Me.labFlussoN2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'labUDMFlussoAria
+        '
+        Me.labUDMFlussoAria.Location = New System.Drawing.Point(456, 23)
+        Me.labUDMFlussoAria.Margin = New System.Windows.Forms.Padding(2, 5, 5, 5)
+        Me.labUDMFlussoAria.Name = "labUDMFlussoAria"
+        Me.labUDMFlussoAria.Size = New System.Drawing.Size(55, 26)
+        Me.labUDMFlussoAria.TabIndex = 8
+        Me.labUDMFlussoAria.Text = "?"
+        Me.labUDMFlussoAria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'labFlussoAria
+        '
+        Me.labFlussoAria.BackColor = System.Drawing.Color.White
+        Me.labFlussoAria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.labFlussoAria.Location = New System.Drawing.Point(392, 23)
+        Me.labFlussoAria.Margin = New System.Windows.Forms.Padding(5, 5, 2, 5)
+        Me.labFlussoAria.Name = "labFlussoAria"
+        Me.labFlussoAria.Size = New System.Drawing.Size(60, 26)
+        Me.labFlussoAria.TabIndex = 7
+        Me.labFlussoAria.Text = "???"
+        Me.labFlussoAria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'labDescrFlussoAria
+        '
+        Me.labDescrFlussoAria.AutoSize = True
+        Me.labDescrFlussoAria.Location = New System.Drawing.Point(6, 27)
+        Me.labDescrFlussoAria.Margin = New System.Windows.Forms.Padding(5)
+        Me.labDescrFlussoAria.Name = "labDescrFlussoAria"
+        Me.labDescrFlussoAria.Size = New System.Drawing.Size(230, 18)
+        Me.labDescrFlussoAria.TabIndex = 6
+        Me.labDescrFlussoAria.Text = "Flusso Aria Erogato (NL/minuto)"
+        '
         'frmGestioneRicette
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1337,6 +1349,8 @@ Partial Class frmGestioneRicette
         Me.gbMisureLSU.PerformLayout()
         Me.gbMisureZFAS.ResumeLayout(False)
         Me.gbMisureADV.ResumeLayout(False)
+        Me.gbFlussi.ResumeLayout(False)
+        Me.gbFlussi.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1402,7 +1416,6 @@ Partial Class frmGestioneRicette
     Friend WithEvents labUdmTargetO2 As Label
     Friend WithEvents labTargetO2 As Label
     Friend WithEvents labDescrTargetO2 As Label
-    Friend WithEvents labDescrFlussoN2 As Label
     Friend WithEvents chkResistenzaCalibrazione As CheckBox
     Friend WithEvents labUDMResistenzaCalibrazione As Label
     Friend WithEvents labResistenzaCalibrazioneMax As Label
@@ -1413,11 +1426,6 @@ Partial Class frmGestioneRicette
     Friend WithEvents labO2Max As Label
     Friend WithEvents labUDMO2 As Label
     Friend WithEvents labO2Min As Label
-    Friend WithEvents labUDMFlussoN2 As Label
-    Friend WithEvents labFlussoN2 As Label
-    Friend WithEvents labUDMFlussoAria As Label
-    Friend WithEvents labFlussoAria As Label
-    Friend WithEvents labDescrFlussoAria As Label
     Friend WithEvents gbIheater As GroupBox
     Friend WithEvents labCorrenteRiscaldatoreMax As Label
     Friend WithEvents chkCorrenteRiscaldatore As CheckBox
@@ -1438,4 +1446,11 @@ Partial Class frmGestioneRicette
     Friend WithEvents labUDMTempoRiscaldamento As Label
     Friend WithEvents labTempoRiscaldamento As Label
     Friend WithEvents labDescrTempoRiscaldamento As Label
+    Friend WithEvents gbFlussi As GroupBox
+    Friend WithEvents labDescrFlussoN2 As Label
+    Friend WithEvents labUDMFlussoN2 As Label
+    Friend WithEvents labFlussoN2 As Label
+    Friend WithEvents labUDMFlussoAria As Label
+    Friend WithEvents labFlussoAria As Label
+    Friend WithEvents labDescrFlussoAria As Label
 End Class

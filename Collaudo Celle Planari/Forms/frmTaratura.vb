@@ -162,7 +162,7 @@ Public Class frmTaratura
                 Loop Until ((Date.Now) - t0).TotalSeconds > 1
                 ' Campiono la corrente 10 volte
                 For i = 0 To 9
-                    mGestioneSetpointMisure.MisuraCorrente(0.00001, _misura(i))
+                    mGestioneSetpointMisure.MisuraCorrente(0.0001, _misura(i))
                     _misura(i) = (13.5 / CDec(_misura(i))) / 1000000
                     t0 = Date.Now
                     Do

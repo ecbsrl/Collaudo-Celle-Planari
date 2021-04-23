@@ -45,6 +45,7 @@ Public Class frmGestioneRicette
         tcParametriRicetta.TabPages(0).Enabled = True
         gbVal.Enabled = True
         gbRheater.Enabled = True
+        gbFlussi.Enabled = True
         gbRiscaldamentoRaffreddamento.Enabled = True
         gbIheater.Enabled = True
         gbIsolamento.Enabled = True
@@ -552,6 +553,7 @@ Public Class frmGestioneRicette
         tcParametriRicetta.TabPages(0).Enabled = False
         gbVal.Enabled = False
         gbRheater.Enabled = False
+        gbFlussi.Enabled = False
         gbRiscaldamentoRaffreddamento.Enabled = False
         gbIheater.Enabled = False
         gbIsolamento.Enabled = False
@@ -614,8 +616,8 @@ Public Class frmGestioneRicette
         tcParametriRicetta.Visible = False
         ' Popola la combobox della tipologia di sonde
         cbTipologia.Items.Clear()
-        cbTipologia.Items.Add("LSU-4-9")
-        cbTipologia.Items.Add("LSU-ADV")
+        cbTipologia.Items.Add("LSU 4.9")
+        cbTipologia.Items.Add("ADV")
         cbTipologia.Items.Add("ZFAS-U2")
         ' Resetta il flag di ricetta modificata
         _ricettaModificata = False
@@ -639,7 +641,10 @@ Public Class frmGestioneRicette
         labUDMResistenzaCalibrazione.Text = _ricetta.Lsu_Resistenza_Calibrazione_Min.UnitàDiMisura
         labUDMResistenzaIsolamento.Text = _ricetta.Resistenza_Isolamento_Min.UnitàDiMisura
         labUDMTempoRaffreddamento.Text = _ricetta.Tempo_Raffreddamento.UnitàDiMisura
-
+        labUdmAdvIp.Text = _ricetta.Adv_Ip_Min.UnitàDiMisura
+        labUdmAdvLambda.Text = _ricetta.Adv_Lambda_Min.UnitàDiMisura
+        labUdmZfasIpEtas.Text = _ricetta.Zfas_IpEtas_Min.UnitàDiMisura
+        labUdmZfasIpTb.Text = _ricetta.Zfas_IpTB_Min.UnitàDiMisura
         ' Se il livello della password è maggiore di 0
         If (mGestorePassword.Livello > 0) Then
             ' Abilita i controlli per la modifica della ricetta

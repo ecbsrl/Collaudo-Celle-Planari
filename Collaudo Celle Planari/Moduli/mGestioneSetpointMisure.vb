@@ -50,4 +50,21 @@
 
 
 
+    Public Function MisureAdv(ByRef ip As Double, ByRef lambda As Double) As Boolean
+        Dim tensione As Double
+
+        MisureAdv = mGestioneSetpointMisure.MisuraTensione(tensione)
+        lambda = ((tensione * (15.04 / 5) + 7.35) / 14.7) * mImpostazioniAvanzate.MoltiplicatoreAdvLambda + mImpostazioniAvanzate.OffsetAdvLambda
+        ip = -0.3221 * (lambda * lambda) + 1.6713 * lambda - 1.3069
+    End Function
+
+
+
+    Public Function MisureZfas(ByRef ipEtas As Double, ByRef ipTb As Double) As Boolean
+        Dim corrente As Double
+
+        MisureZfas = mGestioneSetpointMisure.MisuraCorrente(0.01, corrente)
+        ipEtas = mImpostazioniAvanzate.MoltiplicatoreZfasCorrentePumpingEtas * (Math.Abs(corrente) * 1000) + mImpostazioniAvanzate.OffsetZfasCorrentePumpingEtas
+        ipTb = (Math.Abs(corrente) * 1000) * mImpostazioniAvanzate.MoltiplicatoreZfasCorrentePumpingTb + mImpostazioniAvanzate.OffsetZfasCorrentePumpingTb
+    End Function
 End Module
